@@ -1,0 +1,6 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+microbiome_analysis/analysis/data/*
+microbiome_analysis/analysis/figs/*
