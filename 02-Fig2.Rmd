@@ -869,7 +869,7 @@ all_sub_pheno %>%
   })
 
 all_pcts <- all_sub_pheno %>% 
-  map(~ pull(.data = ., fid) ) %>% 
+  purrr::map(~ pull(.data = ., fid) ) %>% 
   imap(~ full %>% select(`# Pathway`, matches(.x)) %>% 
          write_tsv(str_glue('data/shotgun/pull_{.y}_pcts.tsv')))
  
@@ -945,7 +945,7 @@ fns <- list.files('data/shotgun/', pattern = 'lefse_ready_pcts.tsv.res$', full.n
 
 feature <- fns %>% 
   set_names(fns) %>% 
-  map(~ read_tsv(., col_names = c('pathway','xx','direction','score','pval')) %>% 
+  purrr::map(~ read_tsv(., col_names = c('pathway','xx','direction','score','pval')) %>% 
         filter(!is.na(score))) %>% 
   bind_rows(.id = 'group') %>% 
   mutate(group = str_replace(group, 'data/shotgun//','')) %>% 
