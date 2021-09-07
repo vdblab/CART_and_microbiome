@@ -1,7 +1,4 @@
-fig:nice-fig
-tab:nice-tab
 prerequisites
-intro
 fig-3
 b-stacked-bar-chart.
 c-alpha-and-beta-diversity-between-cart-patients-and-healthy-volunteers
@@ -14,8 +11,3 @@ fig3h-histogram-to-illustrate-the-predicted-probability-of-day100-cr
 fig-3i-bayesian-modeling-with-5-genera-abundance-as-predictoroutcome-toxicity
 fig3j-histogram-to-illustrate-the-predicted-probability-of-toxicity
 fig-3k-lefse-of-pathway-abundance-using-shotgun-data
-methods
-applications
-example-one
-example-two
-final-words

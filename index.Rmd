@@ -15,9 +15,7 @@ description: "."
 
 ```{r eval=FALSE}
 install.packages("bookdown")
-
 ```
-
 
 
 ```{r include=FALSE}

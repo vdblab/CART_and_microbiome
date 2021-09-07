@@ -111,7 +111,8 @@ lower_samp <- stb %>%
 lower_samp_o <- sample_dendogram_order[sample_dendogram_order %in% lower_samp]
 higher_samp_o <- sample_dendogram_order[!sample_dendogram_order %in% lower_samp]
 dat$sampleid = factor(dat$sampleid,levels = c(lower_samp_o, higher_samp_o))
-ggplot(dat,aes(sampleid, count_relative, fill = color_label_group_distinct) ) +
+
+stacked_bar <- ggplot(dat,aes(sampleid, count_relative, fill = color_label_group_distinct) ) +
   geom_bar(stat = "identity", position="fill", width = 1) +
   theme_classic() +
   labs(title = '',
@@ -119,8 +120,11 @@ ggplot(dat,aes(sampleid, count_relative, fill = color_label_group_distinct) ) +
   theme(axis.text.x = element_text(angle = 90),
         axis.text.y = element_blank(),
         legend.position = "none") +
-  scale_fill_manual(values = asv_color_set) +
-  ggsave('figs/amplicon/stacked_bar_sorted_with_hclust_lower_and_higher_diversity.pdf', width = 7, height = 5)
+  scale_fill_manual(values = asv_color_set)
+
+stacked_bar
+ggsave('figs/amplicon/stacked_bar_sorted_with_hclust_lower_and_higher_diversity.pdf', plot = stacked_bar,
+       width = 7, height = 5)
 ```
 
 ## 3C: alpha and beta diversity between CART patients and healthy volunteers
@@ -205,7 +209,7 @@ percent_var <- signif(eigen/sum(eigen), 3)*100
 
 bc <- cmdscale(dist_, k = 2)
 
-bc %>%
+pcoa_two <- bc %>%
   as.data.frame() %>%
   rownames_to_column('sampleid') %>% 
   ungroup() %>% 
@@ -214,9 +218,11 @@ bc %>%
   ggscatter(x = 'V1', y = 'V2', color =  'grp') +
   labs(title = 'PCOA of healthy and CART patients') +
   xlab(paste0("PC 1 [",percent_var[1],"%]")) +
-  ylab(paste0("PC 2 [",percent_var[2],"%]")) +
+  ylab(paste0("PC 2 [",percent_var[2],"%]")) 
   #theme_void() +
-  ggsave('figs/PCOA(bray-curtis) of healthy and CART patients.pdf')
+
+pcoa_two
+ggsave('figs/PCOA(bray-curtis) of healthy and CART patients.pdf', plot = pcoa_two)
 
  
 ```
@@ -257,13 +263,15 @@ mp <- bc %>%
   mutate(pool = if_else(str_detect(pool, 'IGO'), str_extract(pool, 'IGO.+$'), pool)) %>% 
   mutate(pool = str_replace(pool, '_1/|_comple.+$',''))
 
-mp %>% 
+pcoa_cart <- mp %>% 
   ggscatter(x = 'V1', y = 'V2', color =  'pool', size = 3) +
   labs(title = 'PCOA of CART patients') +
   xlab(paste0("PC 1 [",percent_var[1],"%]")) +
-  ylab(paste0("PC 2 [",percent_var[2],"%]")) +
+  ylab(paste0("PC 2 [",percent_var[2],"%]")) 
   #theme_void() +
-  ggsave('figs/PCOA(bray-curtis) (ASV level)of CART patients_pool.pdf', width = 9, height = 9)
+
+pcoa_cart
+ggsave('figs/PCOA(bray-curtis) (ASV level)of CART patients_pool.pdf', width = 9, height = 9, plot = pcoa_cart)
 ``` 
  
 ## Fig 3 E&F Lefse analysis with taxa abundance at ASV level
@@ -333,7 +341,7 @@ tpheno <- all_sub_pheno %>%
   })
 
 tcts <- all_sub_pheno %>% 
-  map(~ pull(.data = ., sampleid) ) %>% 
+  purrr::map(~ pull(.data = ., sampleid) ) %>% 
   imap(~ cts_fil %>% select(taxa_asv, matches(.x)) %>%  write_tsv(str_glue('data/amplicon/lefse/{.y}_asv_tcts.tsv'))) 
 ```
 
@@ -375,7 +383,7 @@ fns <- list.files('data/amplicon/lefse/', pattern = 'pull.*_asv_tcts.tsv.res$', 
 # join all of the tables feature together
 feature <- fns %>% 
   set_names(fns) %>% 
-  map(~ read_tsv(., col_names = c('feature','xx','direction','score','pval')) %>% 
+  purrr::map(~ read_tsv(., col_names = c('feature','xx','direction','score','pval')) %>% 
         filter(!is.na(score))) %>% 
   bind_rows(.id = 'group') %>% 
   mutate(group = str_replace(group, 'data/amplicon/lefse//pull_','')) %>% 
@@ -413,6 +421,8 @@ CR <- feature %>%
             labs(title = str_glue('Response to CR') ,
                  y = 'Score')
 
+CR
+
 tox <- feature %>% 
   filter(group == 'toxicity') %>% 
   ggplot(aes(x = reorder(feature, score), y = score, fill = direction)) +
@@ -429,14 +439,17 @@ tox <- feature %>%
             labs(title = str_glue('Response to Toxicity') ,
                  y = 'Score')
 
+tox
+
 g <- cowplot::plot_grid(CR,tox,  
           nrow = 2, 
           align = 'hv',
           rel_heights = c(1.8,1.2),
-          axis = 'b')  +
-  ggsave('figs/amplicon/16s_lefse_combined.pdf', device = 'pdf', height = 15, width = 15)
-
+          axis = 'b')  
 g
+ggsave('figs/amplicon/16s_lefse_combined.pdf', device = 'pdf', height = 15, width = 15, plot = g)
+
+
 ```
   
   
@@ -450,7 +463,7 @@ res <- list.files('data/amplicon/lefse/', pattern = 'asv_tcts.tsv.res$', full.na
 # gather the species level taxa in the lefse significant results
 res_all <- res %>% 
   set_names(res) %>% 
-  map(~ read_tsv(., col_names = c('feature','xx','direction','score','pval')) %>% 
+  purrr::map(~ read_tsv(., col_names = c('feature','xx','direction','score','pval')) %>% 
         filter(!is.na(score))) %>% 
   keep(~ nrow(.) > 0) %>% 
   bind_rows(.id = 'res') %>% 
@@ -497,22 +510,24 @@ joined <- cts_genus %>%
 
 # finally I can do the plotting
 
-joined  %>%
+pull_cr_d100 <- joined  %>%
   filter(grp == 'pull_cr_d100') %>% 
   ggboxplot(x = 'cr_d100', y = 'Relab', add = 'jitter', title = 'Outcome: cr_d100') +
-  facet_wrap(direction ~ genus, scales="free_y") +
-  ggsave('figs/amplicon/lefse_taxa_crd100.pdf', width = 15, height = 13)
+  facet_wrap(direction ~ genus, scales="free_y") 
+pull_cr_d100 
+ggsave('figs/amplicon/lefse_taxa_crd100.pdf', width = 15, height = 13, plot = pull_cr_d100)
  
 ```
   
 As can be observed in the boxplot, patients that had a CR have higher median relative abundance in Ruminococcus.
   
 ```{r}
-joined  %>%
+pull_toxicity <- joined  %>%
   filter(grp == 'pull_toxicity') %>% 
   ggboxplot(x = 'toxicity', y = 'Relab', add = 'jitter', title = 'Outcome: toxicity') +
-  facet_wrap(direction ~ genus, scales="free_y") +
-  ggsave('figs/amplicon/lefse_taxa_toxicity.pdf', width = 15, height = 13)
+  facet_wrap(direction ~ genus, scales="free_y") 
+pull_toxicity  
+ggsave('figs/amplicon/lefse_taxa_toxicity.pdf', width = 15, height = 13, plot = pull_toxicity)
 ```
 As can be observed in the boxplot, patients that had a toxicity response have clearly higher median relative abundance in Bacteroides.
 
@@ -521,10 +536,14 @@ As can be observed in the boxplot, patients that had a toxicity response have cl
 The formular is: CR/Toxicity ~ alpha diversity + center
 
 ```{r}
+library(tidyverse)
+library(ggpubr)
 library(rethinking)
+options(mc.cores = parallel::detectCores())
 
 meta <- read_csv('data/amplicon/stool/combined_2_meta.csv') %>% 
   mutate(logdiv_s = scale(log(simpson_reciprocal))) %>%  
+  mutate(logdiv_s = as.numeric(logdiv_s)) %>% 
   mutate(tox = if_else(toxicity == 'yes', 1, 0),
          cr100 = if_else(cr_d100 == 'yes', 1, 0),
          loca = if_else(center == 'M', 1, 2)) %>%  # MSK 1 ; Upenn 2
@@ -532,7 +551,7 @@ meta <- read_csv('data/amplicon/stool/combined_2_meta.csv') %>%
          toxicity = factor(toxicity, levels = c('no','yes')),
          cr_d100 = factor(cr_d100, levels = c('no','yes')))
 
-meta %>% write_csv('data/amplicon/stool/combined_2_meta_expanded.csv')
+meta %>% readr::write_csv('data/amplicon/stool/combined_2_meta_expanded.csv')
 
 set.seed(123)
 dat_list <- list(
@@ -553,14 +572,14 @@ mtox <- ulam(
         logit(p) <- b*logdiv_s + a[location] ,
         b ~ dnorm( 0 , 2), 
         a[location] ~ dnorm( 0 , 0.5 )
-    ) , data=dat_list , chains=4 , log_lik=TRUE , cores = 8)
+    ) , data=dat_list , chains=4 , log_lik=TRUE , cores = 16)
 
 # make the forest plot 
 df <- precis(mtox,  prob = 0.95)  %>% as.tibble()
 df <- df %>%
   mutate(variable = 'simpson_reciprocal')
 #remove row number 1 (The intercept)
-df %>% 
+forest <- df %>% 
   ggplot(aes(x = reorder(variable, mean), y = mean)) +
   geom_point(shape = 15,
              size  = 4, width = 0.1,
@@ -578,8 +597,9 @@ df %>%
   theme(axis.text = element_text(size = 14)) +
   labs(title = '95% confidence interval of the coefficients\nfor standardized log transformed alpha diversity when outcome is toxicity',
        x = '',
-       y = 'Association with Toxicity') +
-  ggsave('figs/amplicon/bayesian_div_tox.pdf', width = 5, height = 4)
+       y = 'Association with Toxicity') 
+forest 
+ggsave('figs/amplicon/bayesian_div_tox.pdf', width = 5, height = 4, plot = forest)
 ```
 
 ```{r}
@@ -596,7 +616,7 @@ df <- precis(mcr,  prob = 0.95)  %>% as.tibble()
 df <- df %>%
   mutate(variable = 'simpson_reciprocal')
 #remove row number 1 (The intercept)
-df %>% 
+forest <- df %>% 
   ggplot(aes(x = reorder(variable, mean), y = mean)) +
   geom_point(shape = 15,
              size  = 4, width = 0.1,
@@ -612,8 +632,9 @@ df %>%
   geom_hline(yintercept = 0, color = "red", size = 1) +
    theme(axis.title = element_text(size = 0)) +
   theme(axis.text = element_text(size = 14)) +
-  labs(title = '95% confidence interval of the coefficients\nfor standardized log transformed alpha diversity when outcome is CR') +
-  ggsave('figs/amplicon/bayesian_div_cr.pdf', width = 5, height = 4)
+  labs(title = '95% confidence interval of the coefficients\nfor standardized log transformed alpha diversity when outcome is CR') 
+forest
+ggsave('figs/amplicon/bayesian_div_cr.pdf', width = 5, height = 4, plot = forest)
 ```
 
 ## Fig 3G Bayesian modeling with 5 genera abundance as predictor(outcome CR)
@@ -655,7 +676,7 @@ df <- precis(gcr,  prob = 0.95)  %>% as.tibble()
 df <- df %>%
   mutate(variable = c('Akkermansia', 'Bacteroides','Enterococcus','Faecalibacterium','Ruminococcus'))
 #remove row number 1 (The intercept)
-df %>% 
+forest <- df %>% 
   ggplot(aes(x = variable, y = mean)) +
   geom_point(shape = 15,
              size  = 4, width = 0.1,
@@ -671,8 +692,9 @@ df %>%
   geom_hline(yintercept = 0, color = "red", size = 1) +
    theme(axis.title = element_text(size = 0)) +
   theme(axis.text = element_text(size = 14)) +
-  labs(title = 'CR') +
-  ggsave('figs/amplicon/bayesian_genera_cr_log10.pdf', width = 5, height = 4)
+  labs(title = 'CR') 
+forest 
+ggsave('figs/amplicon/bayesian_genera_cr_log10.pdf', width = 5, height = 4, plot = forest)
 ```
 
 ## Fig3H Histogram to illustrate the predicted probability of day100 CR
@@ -725,13 +747,14 @@ res_bot <- pmap(ru_bot, function(Akkermansia, Bacteroides, Enterococcus, Faecali
   bind_rows(.id = 'pt')
 
 # plot them together in one 
-bind_rows(
+Ruminococcus <- bind_rows(
   res_top %>% mutate(grp = 'high Ruminococcus'),
   res_bot %>% mutate(grp = 'low Ruminococcus')
 ) %>% 
   gghistogram(x = 'value',bins = 30, fill = 'grp', palette = 'nejm', color = 'white', add = 'mean',
-                  xlab = 'Predicted probability of CR d100', ylab = 'Probability density')+
-  ggsave('figs/predicted_CR_Ruminococcus_top_bottom_10.pdf', width = 7, height = 5)
+                  xlab = 'Predicted probability of CR d100', ylab = 'Probability density')
+Ruminococcus  
+ggsave('figs/predicted_CR_Ruminococcus_top_bottom_10.pdf', width = 7, height = 5, plot = Ruminococcus)
 
 bind_rows(
   res_top %>% mutate(grp = 'high Ruminococcus'),
@@ -765,7 +788,7 @@ df <- precis(gtox,  prob = 0.95)  %>% as.tibble()
 df <- df %>%
   mutate(variable = c('Akkermansia', 'Bacteroides','Enterococcus','Faecalibacterium','Ruminococcus'))
 #remove row number 1 (The intercept)
-df %>% 
+forest <- df %>% 
   ggplot(aes(x = variable, y = mean)) +
   geom_point(shape = 15,
              size  = 4, width = 0.1,
@@ -781,8 +804,9 @@ df %>%
   geom_hline(yintercept = 0, color = "red", size = 1) +
    theme(axis.title = element_text(size = 0)) +
   theme(axis.text = element_text(size = 14)) +
-  labs(title = 'Toxicity') +
-  ggsave('figs/amplicon/bayesian_genera_tox_log10.pdf', width = 5, height = 4)
+  labs(title = 'Toxicity') 
+forest 
+ggsave('figs/amplicon/bayesian_genera_tox_log10.pdf', width = 5, height = 4, plot = forest)
 ```
 
 ## Fig3J Histogram to illustrate the predicted probability of toxicity
@@ -834,13 +858,14 @@ res_bot <- pmap(ba_bot, function(Akkermansia, Bacteroides, Enterococcus, Faecali
   bind_rows(.id = 'pt') 
 
 # plot them together in one 
-bind_rows(
+bacteroides <- bind_rows(
   res_top %>% mutate(grp = 'top'),
   res_bot %>% mutate(grp = 'bot')
 ) %>% 
   gghistogram(x = 'value',bins = 30, fill = 'grp', palette = 'nejm', color = 'white', add = 'mean',
-                  xlab = 'Predicted probability of Toxicity', ylab = 'Probability density') +
-  ggsave('figs/predicted_tox_bacteroides_top_bottom_10.pdf', width = 7, height = 5)
+                  xlab = 'Predicted probability of Toxicity', ylab = 'Probability density') 
+bacteroides  
+ggsave('figs/predicted_tox_bacteroides_top_bottom_10.pdf', width = 7, height = 5, plot = bacteroides)
 ```
 As can be observed from the histogram, when the patients have high Bacteroides content (relative abundance in the top 10% of the current patient cohort), they are predicted to almost always have a toxicity response: the histogram amassed on the right side of 0.5; whereas when the patients have low Bacteroides content (relative abundance in the bottom 10% of the current patient cohort), the patients are predicted to have no inclination towards whether or not to have a toxicity response.  
 
@@ -986,6 +1011,7 @@ CR <- feature %>%
                   legend.position='bottom') +
             labs(title = str_glue('Response to CR') ,
                  y = 'Score')
+CR
 
 tox <- feature %>% 
   filter(group == 'pull_toxicity') %>% 
@@ -1002,10 +1028,16 @@ tox <- feature %>%
                   legend.position="bottom") +
             labs(title = str_glue('Response to Toxicity') ,
                  y = 'Score')
-cowplot::plot_grid(CR,tox,  
+tox
+
+g <- cowplot::plot_grid(CR,tox,  
           nrow = 2, 
           rel_heights = c(1,3),
           align = 'hv',
           axis = 'b')
+```
+
+```{r}
+sessionInfo()
 ```
 

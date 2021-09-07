@@ -1,3 +1,9 @@
 `r if (knitr::is_html_output()) '
 # References {-}
 '`
+(1) McElreath, R. Statistical Rethinking: A Bayesian Course with Examples in R and Stan; Chapman and Hall/CRC: Boca Raton, 2016. https://doi.org/10.1201/9781315372495.
+
+(2) Wickham, H.; Averick, M.; Bryan, J.; Chang, W.; McGowan, L. D.; François, R.; Grolemund, G.; Hayes, A.; Henry, L.; Hester, J.; Kuhn, M.; Pedersen, T. L.; Miller, E.; Bache, S. M.; Müller, K.; Ooms, J.; Robinson, D.; Seidel, D. P.; Spinu, V.; Takahashi, K.; Vaughan, D.; Wilke, C.; Woo, K.; Yutani, H. Welcome to the Tidyverse. Journal of Open Source Software 2019, 4 (43), 1686. https://doi.org/10.21105/joss.01686.
+
+(3) Alboukadel Kassambara (2020). ggpubr: 'ggplot2' Based Publication Ready Plots. R package
+  version 0.4.0. https://CRAN.R-project.org/package=ggpubr
