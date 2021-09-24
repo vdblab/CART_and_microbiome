@@ -450,6 +450,9 @@ g
 ggsave('figs/amplicon/16s_lefse_combined.pdf', device = 'pdf', height = 15, width = 15, plot = g)
 
 
+ggsave('figs/amplicon/16s_lefse_tox.pdf', device = 'pdf', height = 10, width = 10, plot = tox)
+
+ggsave('figs/amplicon/16s_lefse_CR.pdf', device = 'pdf', height = 10, width = 10, plot = CR)
 ```
   
   
@@ -531,6 +534,45 @@ ggsave('figs/amplicon/lefse_taxa_toxicity.pdf', width = 15, height = 13, plot = 
 ```
 As can be observed in the boxplot, patients that had a toxicity response have clearly higher median relative abundance in Bacteroides.
 
+```{r}
+# to do the wilcoxn test per taxa annd then p-adjust
+df <- joined %>% 
+  filter(genus == 'Bacteroides' & grp == 'pull_cr_d100')
+
+    test =wilcox.test(df %>% filter(cr_d100 == 'yes') %>% pull(Relab), df %>% filter(cr_d100 == 'no') %>% pull(Relab))
+    test$p.value
+
+cr_res <- joined %>% 
+  filter(grp == 'pull_cr_d100') %>% 
+  split(.$genus) %>% 
+  imap_dfr(function(.x, .y){
+    test =wilcox.test(.x %>% filter(cr_d100 == 'yes') %>% pull(Relab), .x %>% filter(cr_d100 == 'no') %>% pull(Relab), exact = F)
+    return(test$p.value)
+  }) %>% 
+  gather() %>% 
+  rename(pval = value) %>% 
+  mutate(padj = p.adjust(pval, method = 'BH')) %>% 
+  mutate(grp = 'pull_cr_d100') 
+  
+tox_res <- joined %>% 
+  filter(grp == 'pull_toxicity') %>% 
+  split(.$genus) %>% 
+  imap_dfr(function(.x, .y){
+    test =wilcox.test(.x %>% filter(toxicity == 'yes') %>% pull(Relab), .x %>% filter(toxicity == 'no') %>% pull(Relab), exact = F)
+    return(test$p.value)
+  }) %>% 
+  gather() %>% 
+  rename(pval = value) %>% 
+  mutate(padj = p.adjust(pval, method = 'BH')) %>% 
+  mutate(grp = 'pull_toxicity') 
+
+all <- bind_rows(cr_res, tox_res)
+
+all %>% 
+  write_csv('data/lefse_sig_taxa_padj.csv')
+```
+
+
 ## Fig 3D Bayesian modeling with microbiome alpha diversity as predictor
 
 The formular is: CR/Toxicity ~ alpha diversity + center
@@ -539,6 +581,7 @@ The formular is: CR/Toxicity ~ alpha diversity + center
 library(tidyverse)
 library(ggpubr)
 library(rethinking)
+library(tidybayes)
 options(mc.cores = parallel::detectCores())
 
 meta <- read_csv('data/amplicon/stool/combined_2_meta.csv') %>% 
@@ -563,9 +606,10 @@ dat_list <- list(
     )
 ```
 
+### outcome: toxicity
 
-```{r}
-# outcome: toxicity
+```{r tox}
+
 mtox <- ulam(
     alist(
         tox ~ dbinom( 1 , p ) ,
@@ -602,15 +646,77 @@ forest
 ggsave('figs/amplicon/bayesian_div_tox.pdf', width = 5, height = 4, plot = forest)
 ```
 
+To examine the diversity's correlation with the toxicity response, imagine there are two hypothetical patients, with diversity of -1 and 1 on the transformed scale for simpson reciprocal diversity, representing "low" and "high" diversity scenarios. We want to see what is the difference between predicted probability of havinng a toxicity response when the diversity is "low" and ""high" in before seeing the data (prior) and after seeing the data (posterior) situations.   
+
+```{r tox_check}
+set.seed(123)
+library(tidybayes)
+theme_set(theme_tidybayes() + cowplot::panel_border())
+div_value <- c(-1, 1)
+# prior check: the differennce in probability
+prior <- extract.prior( mtox , n=4000 ) 
+
+prior_tox <- list(m = 1, p = 2) %>% 
+  purrr::map(function(center_){
+    cols = seq(1, length(div_value)) %>% 
+      set_names(seq(1, length(div_value))) %>% 
+      purrr::map(function(idx){
+         inv_logit( prior$b * div_value[idx] + prior$a[, center_] ) 
+      })
+    
+    diff =  cols[[1]] -cols[[2]] 
+    return(diff)
+  }) 
+
+# post check: the differennce in probability
+post <- extract.samples(mtox)
+
+post_tox <- list(m = 1, p = 2) %>% 
+  purrr::map(function(center_){
+    cols = seq(1, length(div_value)) %>% 
+      set_names(seq(1, length(div_value))) %>% 
+      purrr::map(function(idx){
+         inv_logit( post$b * div_value[idx] + post$a[, center_] ) 
+      })
+    
+    diff = cols[[1]] -cols[[2]] 
+    return(diff)
+  })
+
+
+# bind the two and plot the forest plot
+bind_rows(
+  data_frame(
+      coeff = c(prior_tox$m, prior_tox$p),
+      grp = 'prior'
+    ),
+  data_frame(
+      coeff = c(post_tox$m, post_tox$p),
+      grp = 'post'
+    )
+) %>% 
+    ggplot(aes(x = coeff, y = grp, color = grp)) +
+    stat_pointinterval(.width = c(.66, .95)) +
+  geom_vline(xintercept = 0, col = 'gray', linetype = 'dashed')
+
+```
+
+
+- The prior and posterior confidence interval for the coefficient for scaled log transformed diversity. The median denotes median value. The thinker line represents 66% CI and the thinner line for 95% CI. 
+- The above figure showes that, on average, we don't assume there is a positive or negative correlation between microbiome diversity and a response to toxicity. Thus the median is at 0. But the correlation could be big. For example, there is a probability of 1 of having a toxicity response when the diversity is low and no possibility of having a toxicity response when the diversity is high. Thus the difference in probability (blue line) could reach 1. This assumption is based on our understanding from the literature that microbiome could have big impact on immunology. See this paper (https://www.nature.com/articles/s41586-020-2971-8). 
+- After learning from the data, the interval shrinks in the red line, indicating we are more sure of the correlation, which is 0 since it still centers on 0. 
+
+### outcome : CR_d100
+
 ```{r}
-# outcome : CR_d100
+
 mcr <- ulam( 
     alist( 
         cr100 ~ dbinom( 1 , p ) ,
         logit(p) <- b*logdiv_s + a[location] ,
         b ~ dnorm( 0 , 2),  
         a[location] ~ dnorm( 0 , 0.5 )
-    ) , data=dat_list , chains=4 , log_lik=TRUE , cores = 8)
+    ) , data=dat_list , chains=4 , log_lik=TRUE , cores = 16)
 
 df <- precis(mcr,  prob = 0.95)  %>% as.tibble()
 df <- df %>%
@@ -637,6 +743,63 @@ forest
 ggsave('figs/amplicon/bayesian_div_cr.pdf', width = 5, height = 4, plot = forest)
 ```
 
+To examine the diversity's correlation with the CR response, imagine there are two hypothetical patients, with diversity of -1 and 1 on the transformed scale for simpson reciprocal diversity, representing "low" and "high" diversity scenarios. We want to see what is the difference between predicted probability of havinng a CR response when the diversity is "low" and ""high" in before seeing the data (prior) and after seeing the data (posterior) situations. 
+
+```{r cr_check}
+set.seed(123)
+
+# prior check: the differennce in probability
+prior <- extract.prior( mcr , n=4000 ) 
+
+prior_cr <- list(m = 1, p = 2) %>% 
+  purrr::map(function(center_){
+    cols = seq(1, length(div_value)) %>% 
+      set_names(seq(1, length(div_value))) %>% 
+      purrr::map(function(idx){
+         inv_logit( prior$b * div_value[idx] + prior$a[, center_] ) 
+      })
+    
+    diff =  cols[[1]] -cols[[2]] 
+    return(diff)
+  }) 
+
+# post check: the differennce in probability
+post <- extract.samples(mcr)
+
+post_cr <- list(m = 1, p = 2) %>% 
+  purrr::map(function(center_){
+    cols = seq(1, length(div_value)) %>% 
+      set_names(seq(1, length(div_value))) %>% 
+      purrr::map(function(idx){
+         inv_logit( post$b * div_value[idx] + post$a[, center_] ) 
+      })
+    
+    diff = cols[[1]] -cols[[2]] 
+    return(diff)
+  })
+
+
+# bind the two and plot the forest plot
+bind_rows(
+  data_frame(
+      coeff = c(prior_cr$m, prior_cr$p),
+      grp = 'prior'
+    ),
+  data_frame(
+      coeff = c(post_cr$m, post_cr$p),
+      grp = 'post'
+    )
+) %>% 
+    ggplot(aes(x = coeff, y = grp, color = grp)) +
+    stat_pointinterval(.width = c(.66, .95)) +
+  geom_vline(xintercept = 0, col = 'gray', linetype = 'dashed')
+
+```
+
+- The prior and posterior confidence interval for the coefficient for scaled log transformed diversity. The median denotes median value. The thinker line represents 66% CI and the thinner line for 95% CI. 
+- The above figure showes that, on average, we don't assume there is a positive or negative correlation between microbiome diversity and a response to CR Thus the median is at 0. But the correlation could be big. For example, there is a probability of 1 of having a CR response when the diversity is low and no possibility of having a CR response when the diversity is high. Thus the difference in probability (blue line) could reach 1. This assumption is based on our understanding from the literature that microbiome could have big impact on immunology. See this paper (https://www.nature.com/articles/s41586-020-2971-8). 
+- After learning from the data, the interval shrinks in the red line, indicating we are more sure of the correlation. Though the 95% CI crosses 0, we are able to observe a trend of low diversity correlating to lower probability of having CR as the difference is 90% negative, suggesting a postive correlation between microbiome diversity and having a CR response. 
+
 ## Fig 3G Bayesian modeling with 5 genera abundance as predictor(outcome CR)
 
 ```{r}
@@ -657,6 +820,7 @@ dat_list <- list(
     Ruminococcus = meta$Ruminococcus
     ) 
 ```
+
 CR ~ Akkermansia + Bacteroides + Enterococcus + Faecalibacterium + Ruminococcus + center
 
 ```{r}
@@ -1035,7 +1199,19 @@ g <- cowplot::plot_grid(CR,tox,
           rel_heights = c(1,3),
           align = 'hv',
           axis = 'b')
+
+ggsave('figs/shotgun_lefse_tox.pdf', device = 'pdf', height = 10, width = 10, plot = tox)
+
+ggsave('figs/shotgun_lefse_CR.pdf', device = 'pdf', height = 3, width = 10, plot = CR)
 ```
+
+```{r}
+send <- asv_annotation_blast_ag %>% 
+  filter(asv_key %in% c('asv_36','asv_3','asv_27'))
+send  %>% 
+  write_csv('data/three_asv.csv')
+```
+
 
 ```{r}
 sessionInfo()

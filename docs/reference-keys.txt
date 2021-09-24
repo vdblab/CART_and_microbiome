@@ -6,6 +6,8 @@ alpha-diversity-simpsons-reciprocal
 beta-diversity-pcoa-of-bray-curtis
 fig-3-ef-lefse-analysis-with-taxa-abundance-at-asv-level
 fig-3d-bayesian-modeling-with-microbiome-alpha-diversity-as-predictor
+outcome-toxicity
+outcome-cr_d100
 fig-3g-bayesian-modeling-with-5-genera-abundance-as-predictoroutcome-cr
 fig3h-histogram-to-illustrate-the-predicted-probability-of-day100-cr
 fig-3i-bayesian-modeling-with-5-genera-abundance-as-predictoroutcome-toxicity
