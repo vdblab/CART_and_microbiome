@@ -861,6 +861,45 @@ forest
 ggsave('figs/amplicon/bayesian_genera_cr_log10.pdf', width = 5, height = 4, plot = forest)
 ```
 
+Check the prior and posterior coeff distribution
+
+```{r}
+theme_set(theme_tidybayes() + cowplot::panel_border())
+# check the prior and posterior
+prior <- extract.prior( gcr , n=4000 ) %>% as.tibble()  %>% select(-a) %>% mutate(grp = 'prior')
+post <- extract.samples(gcr) %>% as.tibble()  %>% select(-a) %>% mutate(grp = 'post')
+# comparing prior and post 
+tox <- bind_rows(prior, post) %>% 
+  gather('term', 'coeff', ba:br) %>% 
+  mutate(genus = case_when(
+    term == 'ba' ~ 'Akkermansia',
+    term == 'bb' ~ 'Bacteroides',
+    term == 'be' ~ 'Enterococcus',
+    term == 'bf' ~ 'Faecalibacterium',
+    term == 'br' ~ 'Ruminococcus'
+  ))
+
+post_order <- tox %>% 
+  filter(grp == 'post') %>% 
+  group_by(term, genus) %>% 
+  summarise(q50 = median(coeff)) %>% 
+  arrange(-q50) %>% 
+  pull(genus)
+
+tox %>%
+  mutate(genus = factor(genus, levels = post_order)) %>% 
+  ggplot(aes(x = coeff, y = grp, color = grp)) +
+  stat_pointinterval(.width = c(.66, .95)) +
+  scale_color_manual(values = c('#EC0000','#00468B')) +
+  geom_vline(xintercept = 0, col = 'gray', linetype = 'dashed') +
+  facet_grid(genus ~ .) +
+  labs(x = 'Regression coefficients',
+       y = '') +
+  theme(legend.position = 'none')
+```
+
+- The above figure shows the distribution of the prior coefficients as blue lines and posterior ones as red lines, both with thicker lines to denote 66% CI and thinner lines for the 95% CI. It is observed from the figure that in our prior assumption we don't expect positive or negative correlation between taxa and CR response on average. However after learning from the data the model informed us that it is very likely Ruminococcus is positively associated with CR. 
+
 ## Fig3H Histogram to illustrate the predicted probability of day100 CR
 
 ```{r}
@@ -972,6 +1011,44 @@ forest <- df %>%
 forest 
 ggsave('figs/amplicon/bayesian_genera_tox_log10.pdf', width = 5, height = 4, plot = forest)
 ```
+
+Check the prior and posterior coeff distribution
+
+```{r}
+theme_set(theme_tidybayes() + cowplot::panel_border())
+# check the prior and posterior
+prior <- extract.prior( gtox , n=4000 ) %>% as.tibble()  %>% select(-a) %>% mutate(grp = 'prior')
+post <- extract.samples(gtox) %>% as.tibble()  %>% select(-a) %>% mutate(grp = 'post')
+# comparing prior and post 
+tox <- bind_rows(prior, post) %>% 
+  gather('term', 'coeff', ba:br) %>% 
+  mutate(genus = case_when(
+    term == 'ba' ~ 'Akkermansia',
+    term == 'bb' ~ 'Bacteroides',
+    term == 'be' ~ 'Enterococcus',
+    term == 'bf' ~ 'Faecalibacterium',
+    term == 'br' ~ 'Ruminococcus'
+  ))
+
+post_order <- tox %>% 
+  filter(grp == 'post') %>% 
+  group_by(term, genus) %>% 
+  summarise(q50 = median(coeff)) %>% 
+  arrange(-q50) %>% 
+  pull(genus)
+
+tox %>%
+  mutate(genus = factor(genus, levels = post_order)) %>% 
+  ggplot(aes(x = coeff, y = grp, color = grp)) +
+  stat_pointinterval(.width = c(.66, .95)) +
+  scale_color_manual(values = c('#EC0000','#00468B')) +
+  geom_vline(xintercept = 0, col = 'gray', linetype = 'dashed') +
+  facet_grid(genus ~ .) +
+  labs(x = 'Regression coefficients',
+       y = '') +
+  theme(legend.position = 'none')
+```
+- The above figure shows the distribution of the prior coefficients as blue lines and posterior ones as red lines, both with thicker lines to denote 66% CI and thinner lines for the 95% CI. It is observed from the figure that in our prior assumption we don't expect positive or negative correlation between taxa and toxicity response on average. However after learning from the data the model informed us that there is a trend of Ruminococcus's negative association with toxicity and Bacteroides's positive association with toxicity. 
 
 ## Fig3J Histogram to illustrate the predicted probability of toxicity
 

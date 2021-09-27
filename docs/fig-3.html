@@ -24,7 +24,7 @@
 <meta name="author" content="Anqi Dai" />
 
 
-<meta name="date" content="2021-09-24" />
+<meta name="date" content="2021-09-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -242,9 +242,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb6-5"><a href="fig-3.html#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">#compute beta diversity</span></span>
 <span id="cb6-6"><a href="fig-3.html#cb6-6" aria-hidden="true" tabindex="-1"></a>cbd<span class="sc">$</span><span class="fu">compute_beta_diversity</span>()</span></code></pre></div>
 <pre><code>## Time:Composition_matrix:
-## Time difference of 0.009481907 secs
+## Time difference of 0.009665012 secs
 ## Time:Bray-Curtis matrix:
-## Time difference of 0.002593994 secs</code></pre>
+## Time difference of 0.00253582 secs</code></pre>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="fig-3.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#get beta diversity</span></span>
 <span id="cb8-2"><a href="fig-3.html#cb8-2" aria-hidden="true" tabindex="-1"></a>d_beta <span class="ot">&lt;-</span> cbd<span class="sc">$</span><span class="fu">get_betadiversity</span>() </span>
 <span id="cb8-3"><a href="fig-3.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#compute hierarchical cluster</span></span>
@@ -810,8 +810,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## SAMPLING FOR MODEL &#39;28b7d1edeed92c714c94fb24d1ba3735&#39; NOW (CHAIN 1).
 ## Chain 1: 
-## Chain 1: Gradient evaluation took 1.8e-05 seconds
-## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.18 seconds.
+## Chain 1: Gradient evaluation took 1.9e-05 seconds
+## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.19 seconds.
 ## Chain 1: Adjust your expectations accordingly!
 ## Chain 1: 
 ## Chain 1: 
@@ -828,9 +828,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Chain 1: Iteration: 7200 / 8000 [ 90%]  (Sampling)
 ## Chain 1: Iteration: 8000 / 8000 [100%]  (Sampling)
 ## Chain 1: 
-## Chain 1:  Elapsed Time: 0.113422 seconds (Warm-up)
-## Chain 1:                0.11926 seconds (Sampling)
-## Chain 1:                0.232682 seconds (Total)
+## Chain 1:  Elapsed Time: 0.112933 seconds (Warm-up)
+## Chain 1:                0.110755 seconds (Sampling)
+## Chain 1:                0.223688 seconds (Total)
 ## Chain 1:</code></pre>
 <div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="fig-3.html#cb50-1" aria-hidden="true" tabindex="-1"></a>prior_tox <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">m =</span> <span class="dv">1</span>, <span class="at">p =</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb50-2"><a href="fig-3.html#cb50-2" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">map</span>(<span class="cf">function</span>(center_){</span>
@@ -948,8 +948,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## 
 ## SAMPLING FOR MODEL &#39;28b7d1edeed92c714c94fb24d1ba3735&#39; NOW (CHAIN 1).
 ## Chain 1: 
-## Chain 1: Gradient evaluation took 1.4e-05 seconds
-## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.14 seconds.
+## Chain 1: Gradient evaluation took 1.3e-05 seconds
+## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.13 seconds.
 ## Chain 1: Adjust your expectations accordingly!
 ## Chain 1: 
 ## Chain 1: 
@@ -966,9 +966,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Chain 1: Iteration: 7200 / 8000 [ 90%]  (Sampling)
 ## Chain 1: Iteration: 8000 / 8000 [100%]  (Sampling)
 ## Chain 1: 
-## Chain 1:  Elapsed Time: 0.110092 seconds (Warm-up)
-## Chain 1:                0.104495 seconds (Sampling)
-## Chain 1:                0.214587 seconds (Total)
+## Chain 1:  Elapsed Time: 0.106962 seconds (Warm-up)
+## Chain 1:                0.102204 seconds (Sampling)
+## Chain 1:                0.209166 seconds (Total)
 ## Chain 1:</code></pre>
 <div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="fig-3.html#cb62-1" aria-hidden="true" tabindex="-1"></a>prior_cr <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">m =</span> <span class="dv">1</span>, <span class="at">p =</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb62-2"><a href="fig-3.html#cb62-2" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">map</span>(<span class="cf">function</span>(center_){</span>
@@ -1098,93 +1098,176 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="analysis_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
 <div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="fig-3.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&#39;figs/amplicon/bayesian_genera_cr_log10.pdf&#39;</span>, <span class="at">width =</span> <span class="dv">5</span>, <span class="at">height =</span> <span class="dv">4</span>, <span class="at">plot =</span> forest)</span></code></pre></div>
 <pre><code>## Warning: Width not defined. Set with `position_dodge(width = ?)`</code></pre>
+<p>Check the prior and posterior coeff distribution</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="fig-3.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_tidybayes</span>() <span class="sc">+</span> cowplot<span class="sc">::</span><span class="fu">panel_border</span>())</span>
+<span id="cb72-2"><a href="fig-3.html#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="co"># check the prior and posterior</span></span>
+<span id="cb72-3"><a href="fig-3.html#cb72-3" aria-hidden="true" tabindex="-1"></a>prior <span class="ot">&lt;-</span> <span class="fu">extract.prior</span>( gcr , <span class="at">n=</span><span class="dv">4000</span> ) <span class="sc">%&gt;%</span> <span class="fu">as.tibble</span>()  <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>a) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">grp =</span> <span class="st">&#39;prior&#39;</span>)</span></code></pre></div>
+<pre><code>## Running /Library/Frameworks/R.framework/Resources/bin/R CMD SHLIB foo.c
+## clang -mmacosx-version-min=10.13 -I&quot;/Library/Frameworks/R.framework/Resources/include&quot; -DNDEBUG   -I&quot;/Library/Frameworks/R.framework/Versions/4.1/Resources/library/Rcpp/include/&quot;  -I&quot;/Library/Frameworks/R.framework/Versions/4.1/Resources/library/RcppEigen/include/&quot;  -I&quot;/Library/Frameworks/R.framework/Versions/4.1/Resources/library/RcppEigen/include/unsupported&quot;  -I&quot;/Library/Frameworks/R.framework/Versions/4.1/Resources/library/BH/include&quot; -I&quot;/Library/Frameworks/R.framework/Versions/4.1/Resources/library/StanHeaders/include/src/&quot;  -I&quot;/Library/Frameworks/R.framework/Versions/4.1/Resources/library/StanHeaders/include/&quot;  -I&quot;/Library/Frameworks/R.framework/Versions/4.1/Resources/library/RcppParallel/include/&quot;  -I&quot;/Library/Frameworks/R.framework/Versions/4.1/Resources/library/rstan/include&quot; -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DBOOST_NO_AUTO_PTR  -include &#39;/Library/Frameworks/R.framework/Versions/4.1/Resources/library/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp&#39;  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1   -I/usr/local/include   -fPIC  -Wall -g -O2  -c foo.c -o foo.o
+## In file included from &lt;built-in&gt;:1:
+## In file included from /Library/Frameworks/R.framework/Versions/4.1/Resources/library/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:13:
+## In file included from /Library/Frameworks/R.framework/Versions/4.1/Resources/library/RcppEigen/include/Eigen/Dense:1:
+## In file included from /Library/Frameworks/R.framework/Versions/4.1/Resources/library/RcppEigen/include/Eigen/Core:88:
+## /Library/Frameworks/R.framework/Versions/4.1/Resources/library/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:1: error: unknown type name &#39;namespace&#39;
+## namespace Eigen {
+## ^
+## /Library/Frameworks/R.framework/Versions/4.1/Resources/library/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:16: error: expected &#39;;&#39; after top level declarator
+## namespace Eigen {
+##                ^
+##                ;
+## In file included from &lt;built-in&gt;:1:
+## In file included from /Library/Frameworks/R.framework/Versions/4.1/Resources/library/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:13:
+## In file included from /Library/Frameworks/R.framework/Versions/4.1/Resources/library/RcppEigen/include/Eigen/Dense:1:
+## /Library/Frameworks/R.framework/Versions/4.1/Resources/library/RcppEigen/include/Eigen/Core:96:10: fatal error: &#39;complex&#39; file not found
+## #include &lt;complex&gt;
+##          ^~~~~~~~~
+## 3 errors generated.
+## make: *** [foo.o] Error 1
+## 
+## SAMPLING FOR MODEL &#39;7918a19a60166753261e9ae299e2ffc0&#39; NOW (CHAIN 1).
+## Chain 1: 
+## Chain 1: Gradient evaluation took 2.6e-05 seconds
+## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.26 seconds.
+## Chain 1: Adjust your expectations accordingly!
+## Chain 1: 
+## Chain 1: 
+## Chain 1: Iteration:    1 / 8000 [  0%]  (Warmup)
+## Chain 1: Iteration:  800 / 8000 [ 10%]  (Warmup)
+## Chain 1: Iteration: 1600 / 8000 [ 20%]  (Warmup)
+## Chain 1: Iteration: 2400 / 8000 [ 30%]  (Warmup)
+## Chain 1: Iteration: 3200 / 8000 [ 40%]  (Warmup)
+## Chain 1: Iteration: 4000 / 8000 [ 50%]  (Warmup)
+## Chain 1: Iteration: 4001 / 8000 [ 50%]  (Sampling)
+## Chain 1: Iteration: 4800 / 8000 [ 60%]  (Sampling)
+## Chain 1: Iteration: 5600 / 8000 [ 70%]  (Sampling)
+## Chain 1: Iteration: 6400 / 8000 [ 80%]  (Sampling)
+## Chain 1: Iteration: 7200 / 8000 [ 90%]  (Sampling)
+## Chain 1: Iteration: 8000 / 8000 [100%]  (Sampling)
+## Chain 1: 
+## Chain 1:  Elapsed Time: 0.252854 seconds (Warm-up)
+## Chain 1:                0.2373 seconds (Sampling)
+## Chain 1:                0.490154 seconds (Total)
+## Chain 1:</code></pre>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="fig-3.html#cb74-1" aria-hidden="true" tabindex="-1"></a>post <span class="ot">&lt;-</span> <span class="fu">extract.samples</span>(gcr) <span class="sc">%&gt;%</span> <span class="fu">as.tibble</span>()  <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>a) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">grp =</span> <span class="st">&#39;post&#39;</span>)</span>
+<span id="cb74-2"><a href="fig-3.html#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="co"># comparing prior and post </span></span>
+<span id="cb74-3"><a href="fig-3.html#cb74-3" aria-hidden="true" tabindex="-1"></a>tox <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(prior, post) <span class="sc">%&gt;%</span> </span>
+<span id="cb74-4"><a href="fig-3.html#cb74-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(<span class="st">&#39;term&#39;</span>, <span class="st">&#39;coeff&#39;</span>, ba<span class="sc">:</span>br) <span class="sc">%&gt;%</span> </span>
+<span id="cb74-5"><a href="fig-3.html#cb74-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">genus =</span> <span class="fu">case_when</span>(</span>
+<span id="cb74-6"><a href="fig-3.html#cb74-6" aria-hidden="true" tabindex="-1"></a>    term <span class="sc">==</span> <span class="st">&#39;ba&#39;</span> <span class="sc">~</span> <span class="st">&#39;Akkermansia&#39;</span>,</span>
+<span id="cb74-7"><a href="fig-3.html#cb74-7" aria-hidden="true" tabindex="-1"></a>    term <span class="sc">==</span> <span class="st">&#39;bb&#39;</span> <span class="sc">~</span> <span class="st">&#39;Bacteroides&#39;</span>,</span>
+<span id="cb74-8"><a href="fig-3.html#cb74-8" aria-hidden="true" tabindex="-1"></a>    term <span class="sc">==</span> <span class="st">&#39;be&#39;</span> <span class="sc">~</span> <span class="st">&#39;Enterococcus&#39;</span>,</span>
+<span id="cb74-9"><a href="fig-3.html#cb74-9" aria-hidden="true" tabindex="-1"></a>    term <span class="sc">==</span> <span class="st">&#39;bf&#39;</span> <span class="sc">~</span> <span class="st">&#39;Faecalibacterium&#39;</span>,</span>
+<span id="cb74-10"><a href="fig-3.html#cb74-10" aria-hidden="true" tabindex="-1"></a>    term <span class="sc">==</span> <span class="st">&#39;br&#39;</span> <span class="sc">~</span> <span class="st">&#39;Ruminococcus&#39;</span></span>
+<span id="cb74-11"><a href="fig-3.html#cb74-11" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb74-12"><a href="fig-3.html#cb74-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-13"><a href="fig-3.html#cb74-13" aria-hidden="true" tabindex="-1"></a>post_order <span class="ot">&lt;-</span> tox <span class="sc">%&gt;%</span> </span>
+<span id="cb74-14"><a href="fig-3.html#cb74-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(grp <span class="sc">==</span> <span class="st">&#39;post&#39;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb74-15"><a href="fig-3.html#cb74-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(term, genus) <span class="sc">%&gt;%</span> </span>
+<span id="cb74-16"><a href="fig-3.html#cb74-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">q50 =</span> <span class="fu">median</span>(coeff)) <span class="sc">%&gt;%</span> </span>
+<span id="cb74-17"><a href="fig-3.html#cb74-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>q50) <span class="sc">%&gt;%</span> </span>
+<span id="cb74-18"><a href="fig-3.html#cb74-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(genus)</span>
+<span id="cb74-19"><a href="fig-3.html#cb74-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-20"><a href="fig-3.html#cb74-20" aria-hidden="true" tabindex="-1"></a>tox <span class="sc">%&gt;%</span></span>
+<span id="cb74-21"><a href="fig-3.html#cb74-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">genus =</span> <span class="fu">factor</span>(genus, <span class="at">levels =</span> post_order)) <span class="sc">%&gt;%</span> </span>
+<span id="cb74-22"><a href="fig-3.html#cb74-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> coeff, <span class="at">y =</span> grp, <span class="at">color =</span> grp)) <span class="sc">+</span></span>
+<span id="cb74-23"><a href="fig-3.html#cb74-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_pointinterval</span>(<span class="at">.width =</span> <span class="fu">c</span>(.<span class="dv">66</span>, .<span class="dv">95</span>)) <span class="sc">+</span></span>
+<span id="cb74-24"><a href="fig-3.html#cb74-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&#39;#EC0000&#39;</span>,<span class="st">&#39;#00468B&#39;</span>)) <span class="sc">+</span></span>
+<span id="cb74-25"><a href="fig-3.html#cb74-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">&#39;gray&#39;</span>, <span class="at">linetype =</span> <span class="st">&#39;dashed&#39;</span>) <span class="sc">+</span></span>
+<span id="cb74-26"><a href="fig-3.html#cb74-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(genus <span class="sc">~</span> .) <span class="sc">+</span></span>
+<span id="cb74-27"><a href="fig-3.html#cb74-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&#39;Regression coefficients&#39;</span>,</span>
+<span id="cb74-28"><a href="fig-3.html#cb74-28" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&#39;&#39;</span>) <span class="sc">+</span></span>
+<span id="cb74-29"><a href="fig-3.html#cb74-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&#39;none&#39;</span>)</span></code></pre></div>
+<p><img src="analysis_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
+<ul>
+<li>The above figure shows the distribution of the prior coefficients as blue lines and posterior ones as red lines, both with thicker lines to denote 66% CI and thinner lines for the 95% CI. It is observed from the figure that in our prior assumption we don’t expect positive or negative correlation between taxa and CR response on average. However after learning from the data the model informed us that it is very likely Ruminococcus is positively associated with CR.</li>
+</ul>
 </div>
 <div id="fig3h-histogram-to-illustrate-the-predicted-probability-of-day100-cr" class="section level2" number="2.6">
 <h2><span class="header-section-number">2.6</span> Fig3H Histogram to illustrate the predicted probability of day100 CR</h2>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="fig-3.html#cb72-1" aria-hidden="true" tabindex="-1"></a>post <span class="ot">&lt;-</span> <span class="fu">extract.samples</span>(gcr) </span>
-<span id="cb72-2"><a href="fig-3.html#cb72-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-3"><a href="fig-3.html#cb72-3" aria-hidden="true" tabindex="-1"></a>meta_ <span class="ot">&lt;-</span> meta <span class="sc">%&gt;%</span> </span>
-<span id="cb72-4"><a href="fig-3.html#cb72-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Akkermansia<span class="sc">:</span>Ruminococcus)</span>
-<span id="cb72-5"><a href="fig-3.html#cb72-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-6"><a href="fig-3.html#cb72-6" aria-hidden="true" tabindex="-1"></a><span class="co"># the post coeffs in df format</span></span>
-<span id="cb72-7"><a href="fig-3.html#cb72-7" aria-hidden="true" tabindex="-1"></a>postdf <span class="ot">&lt;-</span> <span class="fu">bind_cols</span>(<span class="at">ba =</span> post<span class="sc">$</span>ba, <span class="at">bb =</span> post<span class="sc">$</span>bb, <span class="at">be =</span> post<span class="sc">$</span>be, <span class="at">bf =</span> post<span class="sc">$</span>bf, <span class="at">br =</span> post<span class="sc">$</span>br, <span class="at">am =</span> post<span class="sc">$</span>a[,<span class="dv">1</span>])</span>
-<span id="cb72-8"><a href="fig-3.html#cb72-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-9"><a href="fig-3.html#cb72-9" aria-hidden="true" tabindex="-1"></a><span class="co"># use the 90% and 10% quantile patient data in terms of ruminococcus relab</span></span>
-<span id="cb72-10"><a href="fig-3.html#cb72-10" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb72-11"><a href="fig-3.html#cb72-11" aria-hidden="true" tabindex="-1"></a><span class="co"># for the top and bottom quantile range of ruminococcus relab</span></span>
-<span id="cb72-12"><a href="fig-3.html#cb72-12" aria-hidden="true" tabindex="-1"></a>ru_top <span class="ot">&lt;-</span> meta_ <span class="sc">%&gt;%</span> </span>
-<span id="cb72-13"><a href="fig-3.html#cb72-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Ruminococcus <span class="sc">&gt;=</span> <span class="fu">quantile</span>(meta<span class="sc">$</span>Ruminococcus, <span class="fl">0.9</span>))</span>
-<span id="cb72-14"><a href="fig-3.html#cb72-14" aria-hidden="true" tabindex="-1"></a>ru_bot <span class="ot">&lt;-</span> meta_ <span class="sc">%&gt;%</span> </span>
-<span id="cb72-15"><a href="fig-3.html#cb72-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Ruminococcus <span class="sc">&lt;=</span> <span class="fu">quantile</span>(meta<span class="sc">$</span>Ruminococcus, <span class="fl">0.1</span>))</span>
-<span id="cb72-16"><a href="fig-3.html#cb72-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-17"><a href="fig-3.html#cb72-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-18"><a href="fig-3.html#cb72-18" aria-hidden="true" tabindex="-1"></a><span class="co"># a function to calculate the predicted probability with the randomly drawn coeff from the posterior distributionn and the log10 transformed relative abundance</span></span>
-<span id="cb72-19"><a href="fig-3.html#cb72-19" aria-hidden="true" tabindex="-1"></a>per_pt_sample_post_prob <span class="ot">&lt;-</span> <span class="cf">function</span>(lga_, lgb_, lge_, lgf_ , lgr_){</span>
-<span id="cb72-20"><a href="fig-3.html#cb72-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># the input is the log relab of the 5 genera for that patient</span></span>
-<span id="cb72-21"><a href="fig-3.html#cb72-21" aria-hidden="true" tabindex="-1"></a>  post_samp <span class="ot">&lt;-</span> postdf <span class="sc">%&gt;%</span> </span>
-<span id="cb72-22"><a href="fig-3.html#cb72-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sample_n</span>(<span class="at">size =</span> N, <span class="at">replace =</span> F)</span>
-<span id="cb72-23"><a href="fig-3.html#cb72-23" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb72-24"><a href="fig-3.html#cb72-24" aria-hidden="true" tabindex="-1"></a>  ret <span class="ot">=</span> <span class="fu">pmap</span>(post_samp, <span class="cf">function</span>(ba, bb, be, bf, br, am) {</span>
-<span id="cb72-25"><a href="fig-3.html#cb72-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">inv_logit</span>( ba <span class="sc">*</span> lga_ <span class="sc">+</span> bb <span class="sc">*</span> lgb_ <span class="sc">+</span> be <span class="sc">*</span> lge_ <span class="sc">+</span>  bf <span class="sc">*</span> lgf_ <span class="sc">+</span> br <span class="sc">*</span> lgr_ <span class="sc">+</span> am ) </span>
-<span id="cb72-26"><a href="fig-3.html#cb72-26" aria-hidden="true" tabindex="-1"></a>  }) <span class="sc">%&gt;%</span> </span>
-<span id="cb72-27"><a href="fig-3.html#cb72-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">set_names</span>(<span class="fu">seq</span>(<span class="dv">1</span>, N)) <span class="sc">%&gt;%</span> </span>
-<span id="cb72-28"><a href="fig-3.html#cb72-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">bind_rows</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb72-29"><a href="fig-3.html#cb72-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gather</span>()</span>
-<span id="cb72-30"><a href="fig-3.html#cb72-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(ret)</span>
-<span id="cb72-31"><a href="fig-3.html#cb72-31" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb72-32"><a href="fig-3.html#cb72-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-33"><a href="fig-3.html#cb72-33" aria-hidden="true" tabindex="-1"></a><span class="co"># for the top quantile patients </span></span>
-<span id="cb72-34"><a href="fig-3.html#cb72-34" aria-hidden="true" tabindex="-1"></a>res_top <span class="ot">&lt;-</span> <span class="fu">pmap</span>(ru_top, <span class="cf">function</span>(Akkermansia, Bacteroides, Enterococcus, Faecalibacterium, Ruminococcus){</span>
-<span id="cb72-35"><a href="fig-3.html#cb72-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">per_pt_sample_post_prob</span>(Akkermansia, Bacteroides, Enterococcus, Faecalibacterium, Ruminococcus)</span>
-<span id="cb72-36"><a href="fig-3.html#cb72-36" aria-hidden="true" tabindex="-1"></a>}) <span class="sc">%&gt;%</span> </span>
-<span id="cb72-37"><a href="fig-3.html#cb72-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_names</span>(<span class="fu">paste</span>(<span class="st">&#39;P&#39;</span>, <span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">nrow</span>(ru_top)), <span class="at">sep =</span> <span class="st">&#39;&#39;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb72-38"><a href="fig-3.html#cb72-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(<span class="at">.id =</span> <span class="st">&#39;pt&#39;</span>)</span>
-<span id="cb72-39"><a href="fig-3.html#cb72-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-40"><a href="fig-3.html#cb72-40" aria-hidden="true" tabindex="-1"></a><span class="co"># for the bottom quantile patients</span></span>
-<span id="cb72-41"><a href="fig-3.html#cb72-41" aria-hidden="true" tabindex="-1"></a>res_bot <span class="ot">&lt;-</span> <span class="fu">pmap</span>(ru_bot, <span class="cf">function</span>(Akkermansia, Bacteroides, Enterococcus, Faecalibacterium, Ruminococcus){</span>
-<span id="cb72-42"><a href="fig-3.html#cb72-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">per_pt_sample_post_prob</span>(Akkermansia, Bacteroides, Enterococcus, Faecalibacterium, Ruminococcus)</span>
-<span id="cb72-43"><a href="fig-3.html#cb72-43" aria-hidden="true" tabindex="-1"></a>}) <span class="sc">%&gt;%</span> </span>
-<span id="cb72-44"><a href="fig-3.html#cb72-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_names</span>(<span class="fu">paste</span>(<span class="st">&#39;P&#39;</span>, <span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">nrow</span>(ru_bot)), <span class="at">sep =</span> <span class="st">&#39;&#39;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb72-45"><a href="fig-3.html#cb72-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(<span class="at">.id =</span> <span class="st">&#39;pt&#39;</span>)</span>
-<span id="cb72-46"><a href="fig-3.html#cb72-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-47"><a href="fig-3.html#cb72-47" aria-hidden="true" tabindex="-1"></a><span class="co"># plot them together in one </span></span>
-<span id="cb72-48"><a href="fig-3.html#cb72-48" aria-hidden="true" tabindex="-1"></a>Ruminococcus <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
-<span id="cb72-49"><a href="fig-3.html#cb72-49" aria-hidden="true" tabindex="-1"></a>  res_top <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">grp =</span> <span class="st">&#39;high Ruminococcus&#39;</span>),</span>
-<span id="cb72-50"><a href="fig-3.html#cb72-50" aria-hidden="true" tabindex="-1"></a>  res_bot <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">grp =</span> <span class="st">&#39;low Ruminococcus&#39;</span>)</span>
-<span id="cb72-51"><a href="fig-3.html#cb72-51" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
-<span id="cb72-52"><a href="fig-3.html#cb72-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gghistogram</span>(<span class="at">x =</span> <span class="st">&#39;value&#39;</span>,<span class="at">bins =</span> <span class="dv">30</span>, <span class="at">fill =</span> <span class="st">&#39;grp&#39;</span>, <span class="at">palette =</span> <span class="st">&#39;nejm&#39;</span>, <span class="at">color =</span> <span class="st">&#39;white&#39;</span>, <span class="at">add =</span> <span class="st">&#39;mean&#39;</span>,</span>
-<span id="cb72-53"><a href="fig-3.html#cb72-53" aria-hidden="true" tabindex="-1"></a>                  <span class="at">xlab =</span> <span class="st">&#39;Predicted probability of CR d100&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;Probability density&#39;</span>)</span>
-<span id="cb72-54"><a href="fig-3.html#cb72-54" aria-hidden="true" tabindex="-1"></a>Ruminococcus  </span></code></pre></div>
-<p><img src="analysis_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="fig-3.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&#39;figs/predicted_CR_Ruminococcus_top_bottom_10.pdf&#39;</span>, <span class="at">width =</span> <span class="dv">7</span>, <span class="at">height =</span> <span class="dv">5</span>, <span class="at">plot =</span> Ruminococcus)</span>
-<span id="cb73-2"><a href="fig-3.html#cb73-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-3"><a href="fig-3.html#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="fu">bind_rows</span>(</span>
-<span id="cb73-4"><a href="fig-3.html#cb73-4" aria-hidden="true" tabindex="-1"></a>  res_top <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">grp =</span> <span class="st">&#39;high Ruminococcus&#39;</span>),</span>
-<span id="cb73-5"><a href="fig-3.html#cb73-5" aria-hidden="true" tabindex="-1"></a>  res_bot <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">grp =</span> <span class="st">&#39;low Ruminococcus&#39;</span>)</span>
-<span id="cb73-6"><a href="fig-3.html#cb73-6" aria-hidden="true" tabindex="-1"></a>)  <span class="sc">%&gt;%</span> </span>
-<span id="cb73-7"><a href="fig-3.html#cb73-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(grp) <span class="sc">%&gt;%</span> </span>
-<span id="cb73-8"><a href="fig-3.html#cb73-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">ave =</span> <span class="fu">mean</span>(value))</span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="fig-3.html#cb75-1" aria-hidden="true" tabindex="-1"></a>post <span class="ot">&lt;-</span> <span class="fu">extract.samples</span>(gcr) </span>
+<span id="cb75-2"><a href="fig-3.html#cb75-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-3"><a href="fig-3.html#cb75-3" aria-hidden="true" tabindex="-1"></a>meta_ <span class="ot">&lt;-</span> meta <span class="sc">%&gt;%</span> </span>
+<span id="cb75-4"><a href="fig-3.html#cb75-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Akkermansia<span class="sc">:</span>Ruminococcus)</span>
+<span id="cb75-5"><a href="fig-3.html#cb75-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-6"><a href="fig-3.html#cb75-6" aria-hidden="true" tabindex="-1"></a><span class="co"># the post coeffs in df format</span></span>
+<span id="cb75-7"><a href="fig-3.html#cb75-7" aria-hidden="true" tabindex="-1"></a>postdf <span class="ot">&lt;-</span> <span class="fu">bind_cols</span>(<span class="at">ba =</span> post<span class="sc">$</span>ba, <span class="at">bb =</span> post<span class="sc">$</span>bb, <span class="at">be =</span> post<span class="sc">$</span>be, <span class="at">bf =</span> post<span class="sc">$</span>bf, <span class="at">br =</span> post<span class="sc">$</span>br, <span class="at">am =</span> post<span class="sc">$</span>a[,<span class="dv">1</span>])</span>
+<span id="cb75-8"><a href="fig-3.html#cb75-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-9"><a href="fig-3.html#cb75-9" aria-hidden="true" tabindex="-1"></a><span class="co"># use the 90% and 10% quantile patient data in terms of ruminococcus relab</span></span>
+<span id="cb75-10"><a href="fig-3.html#cb75-10" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb75-11"><a href="fig-3.html#cb75-11" aria-hidden="true" tabindex="-1"></a><span class="co"># for the top and bottom quantile range of ruminococcus relab</span></span>
+<span id="cb75-12"><a href="fig-3.html#cb75-12" aria-hidden="true" tabindex="-1"></a>ru_top <span class="ot">&lt;-</span> meta_ <span class="sc">%&gt;%</span> </span>
+<span id="cb75-13"><a href="fig-3.html#cb75-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Ruminococcus <span class="sc">&gt;=</span> <span class="fu">quantile</span>(meta<span class="sc">$</span>Ruminococcus, <span class="fl">0.9</span>))</span>
+<span id="cb75-14"><a href="fig-3.html#cb75-14" aria-hidden="true" tabindex="-1"></a>ru_bot <span class="ot">&lt;-</span> meta_ <span class="sc">%&gt;%</span> </span>
+<span id="cb75-15"><a href="fig-3.html#cb75-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Ruminococcus <span class="sc">&lt;=</span> <span class="fu">quantile</span>(meta<span class="sc">$</span>Ruminococcus, <span class="fl">0.1</span>))</span>
+<span id="cb75-16"><a href="fig-3.html#cb75-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-17"><a href="fig-3.html#cb75-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-18"><a href="fig-3.html#cb75-18" aria-hidden="true" tabindex="-1"></a><span class="co"># a function to calculate the predicted probability with the randomly drawn coeff from the posterior distributionn and the log10 transformed relative abundance</span></span>
+<span id="cb75-19"><a href="fig-3.html#cb75-19" aria-hidden="true" tabindex="-1"></a>per_pt_sample_post_prob <span class="ot">&lt;-</span> <span class="cf">function</span>(lga_, lgb_, lge_, lgf_ , lgr_){</span>
+<span id="cb75-20"><a href="fig-3.html#cb75-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># the input is the log relab of the 5 genera for that patient</span></span>
+<span id="cb75-21"><a href="fig-3.html#cb75-21" aria-hidden="true" tabindex="-1"></a>  post_samp <span class="ot">&lt;-</span> postdf <span class="sc">%&gt;%</span> </span>
+<span id="cb75-22"><a href="fig-3.html#cb75-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sample_n</span>(<span class="at">size =</span> N, <span class="at">replace =</span> F)</span>
+<span id="cb75-23"><a href="fig-3.html#cb75-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb75-24"><a href="fig-3.html#cb75-24" aria-hidden="true" tabindex="-1"></a>  ret <span class="ot">=</span> <span class="fu">pmap</span>(post_samp, <span class="cf">function</span>(ba, bb, be, bf, br, am) {</span>
+<span id="cb75-25"><a href="fig-3.html#cb75-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">inv_logit</span>( ba <span class="sc">*</span> lga_ <span class="sc">+</span> bb <span class="sc">*</span> lgb_ <span class="sc">+</span> be <span class="sc">*</span> lge_ <span class="sc">+</span>  bf <span class="sc">*</span> lgf_ <span class="sc">+</span> br <span class="sc">*</span> lgr_ <span class="sc">+</span> am ) </span>
+<span id="cb75-26"><a href="fig-3.html#cb75-26" aria-hidden="true" tabindex="-1"></a>  }) <span class="sc">%&gt;%</span> </span>
+<span id="cb75-27"><a href="fig-3.html#cb75-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">set_names</span>(<span class="fu">seq</span>(<span class="dv">1</span>, N)) <span class="sc">%&gt;%</span> </span>
+<span id="cb75-28"><a href="fig-3.html#cb75-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">bind_rows</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb75-29"><a href="fig-3.html#cb75-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gather</span>()</span>
+<span id="cb75-30"><a href="fig-3.html#cb75-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(ret)</span>
+<span id="cb75-31"><a href="fig-3.html#cb75-31" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb75-32"><a href="fig-3.html#cb75-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-33"><a href="fig-3.html#cb75-33" aria-hidden="true" tabindex="-1"></a><span class="co"># for the top quantile patients </span></span>
+<span id="cb75-34"><a href="fig-3.html#cb75-34" aria-hidden="true" tabindex="-1"></a>res_top <span class="ot">&lt;-</span> <span class="fu">pmap</span>(ru_top, <span class="cf">function</span>(Akkermansia, Bacteroides, Enterococcus, Faecalibacterium, Ruminococcus){</span>
+<span id="cb75-35"><a href="fig-3.html#cb75-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">per_pt_sample_post_prob</span>(Akkermansia, Bacteroides, Enterococcus, Faecalibacterium, Ruminococcus)</span>
+<span id="cb75-36"><a href="fig-3.html#cb75-36" aria-hidden="true" tabindex="-1"></a>}) <span class="sc">%&gt;%</span> </span>
+<span id="cb75-37"><a href="fig-3.html#cb75-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_names</span>(<span class="fu">paste</span>(<span class="st">&#39;P&#39;</span>, <span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">nrow</span>(ru_top)), <span class="at">sep =</span> <span class="st">&#39;&#39;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb75-38"><a href="fig-3.html#cb75-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(<span class="at">.id =</span> <span class="st">&#39;pt&#39;</span>)</span>
+<span id="cb75-39"><a href="fig-3.html#cb75-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-40"><a href="fig-3.html#cb75-40" aria-hidden="true" tabindex="-1"></a><span class="co"># for the bottom quantile patients</span></span>
+<span id="cb75-41"><a href="fig-3.html#cb75-41" aria-hidden="true" tabindex="-1"></a>res_bot <span class="ot">&lt;-</span> <span class="fu">pmap</span>(ru_bot, <span class="cf">function</span>(Akkermansia, Bacteroides, Enterococcus, Faecalibacterium, Ruminococcus){</span>
+<span id="cb75-42"><a href="fig-3.html#cb75-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">per_pt_sample_post_prob</span>(Akkermansia, Bacteroides, Enterococcus, Faecalibacterium, Ruminococcus)</span>
+<span id="cb75-43"><a href="fig-3.html#cb75-43" aria-hidden="true" tabindex="-1"></a>}) <span class="sc">%&gt;%</span> </span>
+<span id="cb75-44"><a href="fig-3.html#cb75-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_names</span>(<span class="fu">paste</span>(<span class="st">&#39;P&#39;</span>, <span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">nrow</span>(ru_bot)), <span class="at">sep =</span> <span class="st">&#39;&#39;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb75-45"><a href="fig-3.html#cb75-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(<span class="at">.id =</span> <span class="st">&#39;pt&#39;</span>)</span>
+<span id="cb75-46"><a href="fig-3.html#cb75-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-47"><a href="fig-3.html#cb75-47" aria-hidden="true" tabindex="-1"></a><span class="co"># plot them together in one </span></span>
+<span id="cb75-48"><a href="fig-3.html#cb75-48" aria-hidden="true" tabindex="-1"></a>Ruminococcus <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
+<span id="cb75-49"><a href="fig-3.html#cb75-49" aria-hidden="true" tabindex="-1"></a>  res_top <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">grp =</span> <span class="st">&#39;high Ruminococcus&#39;</span>),</span>
+<span id="cb75-50"><a href="fig-3.html#cb75-50" aria-hidden="true" tabindex="-1"></a>  res_bot <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">grp =</span> <span class="st">&#39;low Ruminococcus&#39;</span>)</span>
+<span id="cb75-51"><a href="fig-3.html#cb75-51" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb75-52"><a href="fig-3.html#cb75-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gghistogram</span>(<span class="at">x =</span> <span class="st">&#39;value&#39;</span>,<span class="at">bins =</span> <span class="dv">30</span>, <span class="at">fill =</span> <span class="st">&#39;grp&#39;</span>, <span class="at">palette =</span> <span class="st">&#39;nejm&#39;</span>, <span class="at">color =</span> <span class="st">&#39;white&#39;</span>, <span class="at">add =</span> <span class="st">&#39;mean&#39;</span>,</span>
+<span id="cb75-53"><a href="fig-3.html#cb75-53" aria-hidden="true" tabindex="-1"></a>                  <span class="at">xlab =</span> <span class="st">&#39;Predicted probability of CR d100&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;Probability density&#39;</span>)</span>
+<span id="cb75-54"><a href="fig-3.html#cb75-54" aria-hidden="true" tabindex="-1"></a>Ruminococcus  </span></code></pre></div>
+<p><img src="analysis_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="fig-3.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&#39;figs/predicted_CR_Ruminococcus_top_bottom_10.pdf&#39;</span>, <span class="at">width =</span> <span class="dv">7</span>, <span class="at">height =</span> <span class="dv">5</span>, <span class="at">plot =</span> Ruminococcus)</span>
+<span id="cb76-2"><a href="fig-3.html#cb76-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-3"><a href="fig-3.html#cb76-3" aria-hidden="true" tabindex="-1"></a><span class="fu">bind_rows</span>(</span>
+<span id="cb76-4"><a href="fig-3.html#cb76-4" aria-hidden="true" tabindex="-1"></a>  res_top <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">grp =</span> <span class="st">&#39;high Ruminococcus&#39;</span>),</span>
+<span id="cb76-5"><a href="fig-3.html#cb76-5" aria-hidden="true" tabindex="-1"></a>  res_bot <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">grp =</span> <span class="st">&#39;low Ruminococcus&#39;</span>)</span>
+<span id="cb76-6"><a href="fig-3.html#cb76-6" aria-hidden="true" tabindex="-1"></a>)  <span class="sc">%&gt;%</span> </span>
+<span id="cb76-7"><a href="fig-3.html#cb76-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(grp) <span class="sc">%&gt;%</span> </span>
+<span id="cb76-8"><a href="fig-3.html#cb76-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">ave =</span> <span class="fu">mean</span>(value))</span></code></pre></div>
 <pre><code>## # A tibble: 2 × 2
 ##   grp                 ave
 ##   &lt;chr&gt;             &lt;dbl&gt;
-## 1 high Ruminococcus 0.695
-## 2 low Ruminococcus  0.269</code></pre>
+## 1 high Ruminococcus 0.685
+## 2 low Ruminococcus  0.278</code></pre>
 <p>As can be observed from the histogram, when the patients have high Ruminococcus content (relative abundance in the top 10% of the current patient cohort), they are predicted to have on average a probability of 0.67 to have CR at day 100; whereas when they have low Ruminococcus content (relative abundance in the bottom 10% of the current patient cohort), they are predicted to have only on average a probability of 0.27 to have CR at day 100.</p>
 </div>
 <div id="fig-3i-bayesian-modeling-with-5-genera-abundance-as-predictoroutcome-toxicity" class="section level2" number="2.7">
 <h2><span class="header-section-number">2.7</span> Fig 3I Bayesian modeling with 5 genera abundance as predictor(outcome toxicity)</h2>
 <p>Toxicity ~ Akkermansia + Bacteroides + Enterococcus + Faecalibacterium + Ruminococcus + center</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="fig-3.html#cb75-1" aria-hidden="true" tabindex="-1"></a>gtox <span class="ot">&lt;-</span> <span class="fu">ulam</span>(</span>
-<span id="cb75-2"><a href="fig-3.html#cb75-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">alist</span>(</span>
-<span id="cb75-3"><a href="fig-3.html#cb75-3" aria-hidden="true" tabindex="-1"></a>        tox <span class="sc">~</span> <span class="fu">dbinom</span>( <span class="dv">1</span> , p ) ,</span>
-<span id="cb75-4"><a href="fig-3.html#cb75-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">logit</span>(p) <span class="ot">&lt;-</span> ba<span class="sc">*</span>Akkermansia <span class="sc">+</span> bb<span class="sc">*</span>Bacteroides <span class="sc">+</span> be<span class="sc">*</span>Enterococcus <span class="sc">+</span> bf<span class="sc">*</span>Faecalibacterium <span class="sc">+</span> br<span class="sc">*</span>Ruminococcus <span class="sc">+</span> a[location] ,</span>
-<span id="cb75-5"><a href="fig-3.html#cb75-5" aria-hidden="true" tabindex="-1"></a>        ba <span class="sc">~</span> <span class="fu">dnorm</span>( <span class="dv">0</span> , <span class="dv">1</span>),</span>
-<span id="cb75-6"><a href="fig-3.html#cb75-6" aria-hidden="true" tabindex="-1"></a>        bb <span class="sc">~</span> <span class="fu">dnorm</span>( <span class="dv">0</span> , <span class="dv">1</span>),</span>
-<span id="cb75-7"><a href="fig-3.html#cb75-7" aria-hidden="true" tabindex="-1"></a>        be <span class="sc">~</span> <span class="fu">dnorm</span>( <span class="dv">0</span> , <span class="dv">1</span>),</span>
-<span id="cb75-8"><a href="fig-3.html#cb75-8" aria-hidden="true" tabindex="-1"></a>        bf <span class="sc">~</span> <span class="fu">dnorm</span>( <span class="dv">0</span> , <span class="dv">1</span>),</span>
-<span id="cb75-9"><a href="fig-3.html#cb75-9" aria-hidden="true" tabindex="-1"></a>        br <span class="sc">~</span> <span class="fu">dnorm</span>( <span class="dv">0</span> , <span class="dv">1</span>),</span>
-<span id="cb75-10"><a href="fig-3.html#cb75-10" aria-hidden="true" tabindex="-1"></a>        a[location] <span class="sc">~</span> <span class="fu">dnorm</span>( <span class="dv">0</span> , <span class="fl">0.5</span> )</span>
-<span id="cb75-11"><a href="fig-3.html#cb75-11" aria-hidden="true" tabindex="-1"></a>    ) , <span class="at">data=</span>dat_list , <span class="at">chains=</span><span class="dv">4</span> , <span class="at">log_lik=</span><span class="cn">TRUE</span> , <span class="at">cores =</span> <span class="dv">16</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="fig-3.html#cb78-1" aria-hidden="true" tabindex="-1"></a>gtox <span class="ot">&lt;-</span> <span class="fu">ulam</span>(</span>
+<span id="cb78-2"><a href="fig-3.html#cb78-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">alist</span>(</span>
+<span id="cb78-3"><a href="fig-3.html#cb78-3" aria-hidden="true" tabindex="-1"></a>        tox <span class="sc">~</span> <span class="fu">dbinom</span>( <span class="dv">1</span> , p ) ,</span>
+<span id="cb78-4"><a href="fig-3.html#cb78-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">logit</span>(p) <span class="ot">&lt;-</span> ba<span class="sc">*</span>Akkermansia <span class="sc">+</span> bb<span class="sc">*</span>Bacteroides <span class="sc">+</span> be<span class="sc">*</span>Enterococcus <span class="sc">+</span> bf<span class="sc">*</span>Faecalibacterium <span class="sc">+</span> br<span class="sc">*</span>Ruminococcus <span class="sc">+</span> a[location] ,</span>
+<span id="cb78-5"><a href="fig-3.html#cb78-5" aria-hidden="true" tabindex="-1"></a>        ba <span class="sc">~</span> <span class="fu">dnorm</span>( <span class="dv">0</span> , <span class="dv">1</span>),</span>
+<span id="cb78-6"><a href="fig-3.html#cb78-6" aria-hidden="true" tabindex="-1"></a>        bb <span class="sc">~</span> <span class="fu">dnorm</span>( <span class="dv">0</span> , <span class="dv">1</span>),</span>
+<span id="cb78-7"><a href="fig-3.html#cb78-7" aria-hidden="true" tabindex="-1"></a>        be <span class="sc">~</span> <span class="fu">dnorm</span>( <span class="dv">0</span> , <span class="dv">1</span>),</span>
+<span id="cb78-8"><a href="fig-3.html#cb78-8" aria-hidden="true" tabindex="-1"></a>        bf <span class="sc">~</span> <span class="fu">dnorm</span>( <span class="dv">0</span> , <span class="dv">1</span>),</span>
+<span id="cb78-9"><a href="fig-3.html#cb78-9" aria-hidden="true" tabindex="-1"></a>        br <span class="sc">~</span> <span class="fu">dnorm</span>( <span class="dv">0</span> , <span class="dv">1</span>),</span>
+<span id="cb78-10"><a href="fig-3.html#cb78-10" aria-hidden="true" tabindex="-1"></a>        a[location] <span class="sc">~</span> <span class="fu">dnorm</span>( <span class="dv">0</span> , <span class="fl">0.5</span> )</span>
+<span id="cb78-11"><a href="fig-3.html#cb78-11" aria-hidden="true" tabindex="-1"></a>    ) , <span class="at">data=</span>dat_list , <span class="at">chains=</span><span class="dv">4</span> , <span class="at">log_lik=</span><span class="cn">TRUE</span> , <span class="at">cores =</span> <span class="dv">16</span>)</span></code></pre></div>
 <pre><code>## Running /Library/Frameworks/R.framework/Resources/bin/R CMD SHLIB foo.c
 ## clang -mmacosx-version-min=10.13 -I&quot;/Library/Frameworks/R.framework/Resources/include&quot; -DNDEBUG   -I&quot;/Library/Frameworks/R.framework/Versions/4.1/Resources/library/Rcpp/include/&quot;  -I&quot;/Library/Frameworks/R.framework/Versions/4.1/Resources/library/RcppEigen/include/&quot;  -I&quot;/Library/Frameworks/R.framework/Versions/4.1/Resources/library/RcppEigen/include/unsupported&quot;  -I&quot;/Library/Frameworks/R.framework/Versions/4.1/Resources/library/BH/include&quot; -I&quot;/Library/Frameworks/R.framework/Versions/4.1/Resources/library/StanHeaders/include/src/&quot;  -I&quot;/Library/Frameworks/R.framework/Versions/4.1/Resources/library/StanHeaders/include/&quot;  -I&quot;/Library/Frameworks/R.framework/Versions/4.1/Resources/library/RcppParallel/include/&quot;  -I&quot;/Library/Frameworks/R.framework/Versions/4.1/Resources/library/rstan/include&quot; -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DBOOST_NO_AUTO_PTR  -include &#39;/Library/Frameworks/R.framework/Versions/4.1/Resources/library/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp&#39;  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1   -I/usr/local/include   -fPIC  -Wall -g -O2  -c foo.c -o foo.o
 ## In file included from &lt;built-in&gt;:1:
@@ -1206,104 +1289,164 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##          ^~~~~~~~~
 ## 3 errors generated.
 ## make: *** [foo.o] Error 1</code></pre>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="fig-3.html#cb77-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">precis</span>(gtox,  <span class="at">prob =</span> <span class="fl">0.95</span>)  <span class="sc">%&gt;%</span> <span class="fu">as.tibble</span>()</span>
-<span id="cb77-2"><a href="fig-3.html#cb77-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
-<span id="cb77-3"><a href="fig-3.html#cb77-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">variable =</span> <span class="fu">c</span>(<span class="st">&#39;Akkermansia&#39;</span>, <span class="st">&#39;Bacteroides&#39;</span>,<span class="st">&#39;Enterococcus&#39;</span>,<span class="st">&#39;Faecalibacterium&#39;</span>,<span class="st">&#39;Ruminococcus&#39;</span>))</span>
-<span id="cb77-4"><a href="fig-3.html#cb77-4" aria-hidden="true" tabindex="-1"></a><span class="co">#remove row number 1 (The intercept)</span></span>
-<span id="cb77-5"><a href="fig-3.html#cb77-5" aria-hidden="true" tabindex="-1"></a>forest <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
-<span id="cb77-6"><a href="fig-3.html#cb77-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> variable, <span class="at">y =</span> mean)) <span class="sc">+</span></span>
-<span id="cb77-7"><a href="fig-3.html#cb77-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">15</span>,</span>
-<span id="cb77-8"><a href="fig-3.html#cb77-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">size  =</span> <span class="dv">4</span>, <span class="at">width =</span> <span class="fl">0.1</span>,</span>
-<span id="cb77-9"><a href="fig-3.html#cb77-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>, <span class="at">color=</span><span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
-<span id="cb77-10"><a href="fig-3.html#cb77-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin  =</span> <span class="st">`</span><span class="at">2.5%</span><span class="st">`</span>,</span>
-<span id="cb77-11"><a href="fig-3.html#cb77-11" aria-hidden="true" tabindex="-1"></a>                    <span class="at">ymax  =</span> <span class="st">`</span><span class="at">97.5%</span><span class="st">`</span>),</span>
-<span id="cb77-12"><a href="fig-3.html#cb77-12" aria-hidden="true" tabindex="-1"></a>                <span class="at">width =</span> <span class="fl">0.1</span>,</span>
-<span id="cb77-13"><a href="fig-3.html#cb77-13" aria-hidden="true" tabindex="-1"></a>                <span class="at">size  =</span> <span class="fl">0.7</span>,</span>
-<span id="cb77-14"><a href="fig-3.html#cb77-14" aria-hidden="true" tabindex="-1"></a>                <span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>, <span class="at">color=</span><span class="st">&quot;turquoise4&quot;</span>) <span class="sc">+</span></span>
-<span id="cb77-15"><a href="fig-3.html#cb77-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;bold&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb77-16"><a href="fig-3.html#cb77-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Variables&quot;</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Coefficient with 95% CI&quot;</span>) <span class="sc">+</span></span>
-<span id="cb77-17"><a href="fig-3.html#cb77-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.5</span>, <span class="fl">1.5</span>)) <span class="sc">+</span></span>
-<span id="cb77-18"><a href="fig-3.html#cb77-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb77-19"><a href="fig-3.html#cb77-19" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme</span>(<span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">0</span>)) <span class="sc">+</span></span>
-<span id="cb77-20"><a href="fig-3.html#cb77-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>)) <span class="sc">+</span></span>
-<span id="cb77-21"><a href="fig-3.html#cb77-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&#39;Toxicity&#39;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="fig-3.html#cb80-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">precis</span>(gtox,  <span class="at">prob =</span> <span class="fl">0.95</span>)  <span class="sc">%&gt;%</span> <span class="fu">as.tibble</span>()</span>
+<span id="cb80-2"><a href="fig-3.html#cb80-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb80-3"><a href="fig-3.html#cb80-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">variable =</span> <span class="fu">c</span>(<span class="st">&#39;Akkermansia&#39;</span>, <span class="st">&#39;Bacteroides&#39;</span>,<span class="st">&#39;Enterococcus&#39;</span>,<span class="st">&#39;Faecalibacterium&#39;</span>,<span class="st">&#39;Ruminococcus&#39;</span>))</span>
+<span id="cb80-4"><a href="fig-3.html#cb80-4" aria-hidden="true" tabindex="-1"></a><span class="co">#remove row number 1 (The intercept)</span></span>
+<span id="cb80-5"><a href="fig-3.html#cb80-5" aria-hidden="true" tabindex="-1"></a>forest <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb80-6"><a href="fig-3.html#cb80-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> variable, <span class="at">y =</span> mean)) <span class="sc">+</span></span>
+<span id="cb80-7"><a href="fig-3.html#cb80-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">15</span>,</span>
+<span id="cb80-8"><a href="fig-3.html#cb80-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">size  =</span> <span class="dv">4</span>, <span class="at">width =</span> <span class="fl">0.1</span>,</span>
+<span id="cb80-9"><a href="fig-3.html#cb80-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>, <span class="at">color=</span><span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb80-10"><a href="fig-3.html#cb80-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin  =</span> <span class="st">`</span><span class="at">2.5%</span><span class="st">`</span>,</span>
+<span id="cb80-11"><a href="fig-3.html#cb80-11" aria-hidden="true" tabindex="-1"></a>                    <span class="at">ymax  =</span> <span class="st">`</span><span class="at">97.5%</span><span class="st">`</span>),</span>
+<span id="cb80-12"><a href="fig-3.html#cb80-12" aria-hidden="true" tabindex="-1"></a>                <span class="at">width =</span> <span class="fl">0.1</span>,</span>
+<span id="cb80-13"><a href="fig-3.html#cb80-13" aria-hidden="true" tabindex="-1"></a>                <span class="at">size  =</span> <span class="fl">0.7</span>,</span>
+<span id="cb80-14"><a href="fig-3.html#cb80-14" aria-hidden="true" tabindex="-1"></a>                <span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>, <span class="at">color=</span><span class="st">&quot;turquoise4&quot;</span>) <span class="sc">+</span></span>
+<span id="cb80-15"><a href="fig-3.html#cb80-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;bold&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb80-16"><a href="fig-3.html#cb80-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Variables&quot;</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Coefficient with 95% CI&quot;</span>) <span class="sc">+</span></span>
+<span id="cb80-17"><a href="fig-3.html#cb80-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.5</span>, <span class="fl">1.5</span>)) <span class="sc">+</span></span>
+<span id="cb80-18"><a href="fig-3.html#cb80-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb80-19"><a href="fig-3.html#cb80-19" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme</span>(<span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb80-20"><a href="fig-3.html#cb80-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>)) <span class="sc">+</span></span>
+<span id="cb80-21"><a href="fig-3.html#cb80-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&#39;Toxicity&#39;</span>) </span></code></pre></div>
 <pre><code>## Warning: Ignoring unknown parameters: width</code></pre>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="fig-3.html#cb79-1" aria-hidden="true" tabindex="-1"></a>forest </span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="fig-3.html#cb82-1" aria-hidden="true" tabindex="-1"></a>forest </span></code></pre></div>
 <pre><code>## Warning: Width not defined. Set with `position_dodge(width = ?)`</code></pre>
-<p><img src="analysis_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="fig-3.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&#39;figs/amplicon/bayesian_genera_tox_log10.pdf&#39;</span>, <span class="at">width =</span> <span class="dv">5</span>, <span class="at">height =</span> <span class="dv">4</span>, <span class="at">plot =</span> forest)</span></code></pre></div>
+<p><img src="analysis_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="fig-3.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&#39;figs/amplicon/bayesian_genera_tox_log10.pdf&#39;</span>, <span class="at">width =</span> <span class="dv">5</span>, <span class="at">height =</span> <span class="dv">4</span>, <span class="at">plot =</span> forest)</span></code></pre></div>
 <pre><code>## Warning: Width not defined. Set with `position_dodge(width = ?)`</code></pre>
+<p>Check the prior and posterior coeff distribution</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="fig-3.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_tidybayes</span>() <span class="sc">+</span> cowplot<span class="sc">::</span><span class="fu">panel_border</span>())</span>
+<span id="cb86-2"><a href="fig-3.html#cb86-2" aria-hidden="true" tabindex="-1"></a><span class="co"># check the prior and posterior</span></span>
+<span id="cb86-3"><a href="fig-3.html#cb86-3" aria-hidden="true" tabindex="-1"></a>prior <span class="ot">&lt;-</span> <span class="fu">extract.prior</span>( gtox , <span class="at">n=</span><span class="dv">4000</span> ) <span class="sc">%&gt;%</span> <span class="fu">as.tibble</span>()  <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>a) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">grp =</span> <span class="st">&#39;prior&#39;</span>)</span></code></pre></div>
+<pre><code>## 
+## SAMPLING FOR MODEL &#39;7918a19a60166753261e9ae299e2ffc0&#39; NOW (CHAIN 1).
+## Chain 1: 
+## Chain 1: Gradient evaluation took 2.2e-05 seconds
+## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.22 seconds.
+## Chain 1: Adjust your expectations accordingly!
+## Chain 1: 
+## Chain 1: 
+## Chain 1: Iteration:    1 / 8000 [  0%]  (Warmup)
+## Chain 1: Iteration:  800 / 8000 [ 10%]  (Warmup)
+## Chain 1: Iteration: 1600 / 8000 [ 20%]  (Warmup)
+## Chain 1: Iteration: 2400 / 8000 [ 30%]  (Warmup)
+## Chain 1: Iteration: 3200 / 8000 [ 40%]  (Warmup)
+## Chain 1: Iteration: 4000 / 8000 [ 50%]  (Warmup)
+## Chain 1: Iteration: 4001 / 8000 [ 50%]  (Sampling)
+## Chain 1: Iteration: 4800 / 8000 [ 60%]  (Sampling)
+## Chain 1: Iteration: 5600 / 8000 [ 70%]  (Sampling)
+## Chain 1: Iteration: 6400 / 8000 [ 80%]  (Sampling)
+## Chain 1: Iteration: 7200 / 8000 [ 90%]  (Sampling)
+## Chain 1: Iteration: 8000 / 8000 [100%]  (Sampling)
+## Chain 1: 
+## Chain 1:  Elapsed Time: 0.244513 seconds (Warm-up)
+## Chain 1:                0.244409 seconds (Sampling)
+## Chain 1:                0.488922 seconds (Total)
+## Chain 1:</code></pre>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="fig-3.html#cb88-1" aria-hidden="true" tabindex="-1"></a>post <span class="ot">&lt;-</span> <span class="fu">extract.samples</span>(gtox) <span class="sc">%&gt;%</span> <span class="fu">as.tibble</span>()  <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>a) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">grp =</span> <span class="st">&#39;post&#39;</span>)</span>
+<span id="cb88-2"><a href="fig-3.html#cb88-2" aria-hidden="true" tabindex="-1"></a><span class="co"># comparing prior and post </span></span>
+<span id="cb88-3"><a href="fig-3.html#cb88-3" aria-hidden="true" tabindex="-1"></a>tox <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(prior, post) <span class="sc">%&gt;%</span> </span>
+<span id="cb88-4"><a href="fig-3.html#cb88-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(<span class="st">&#39;term&#39;</span>, <span class="st">&#39;coeff&#39;</span>, ba<span class="sc">:</span>br) <span class="sc">%&gt;%</span> </span>
+<span id="cb88-5"><a href="fig-3.html#cb88-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">genus =</span> <span class="fu">case_when</span>(</span>
+<span id="cb88-6"><a href="fig-3.html#cb88-6" aria-hidden="true" tabindex="-1"></a>    term <span class="sc">==</span> <span class="st">&#39;ba&#39;</span> <span class="sc">~</span> <span class="st">&#39;Akkermansia&#39;</span>,</span>
+<span id="cb88-7"><a href="fig-3.html#cb88-7" aria-hidden="true" tabindex="-1"></a>    term <span class="sc">==</span> <span class="st">&#39;bb&#39;</span> <span class="sc">~</span> <span class="st">&#39;Bacteroides&#39;</span>,</span>
+<span id="cb88-8"><a href="fig-3.html#cb88-8" aria-hidden="true" tabindex="-1"></a>    term <span class="sc">==</span> <span class="st">&#39;be&#39;</span> <span class="sc">~</span> <span class="st">&#39;Enterococcus&#39;</span>,</span>
+<span id="cb88-9"><a href="fig-3.html#cb88-9" aria-hidden="true" tabindex="-1"></a>    term <span class="sc">==</span> <span class="st">&#39;bf&#39;</span> <span class="sc">~</span> <span class="st">&#39;Faecalibacterium&#39;</span>,</span>
+<span id="cb88-10"><a href="fig-3.html#cb88-10" aria-hidden="true" tabindex="-1"></a>    term <span class="sc">==</span> <span class="st">&#39;br&#39;</span> <span class="sc">~</span> <span class="st">&#39;Ruminococcus&#39;</span></span>
+<span id="cb88-11"><a href="fig-3.html#cb88-11" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb88-12"><a href="fig-3.html#cb88-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb88-13"><a href="fig-3.html#cb88-13" aria-hidden="true" tabindex="-1"></a>post_order <span class="ot">&lt;-</span> tox <span class="sc">%&gt;%</span> </span>
+<span id="cb88-14"><a href="fig-3.html#cb88-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(grp <span class="sc">==</span> <span class="st">&#39;post&#39;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb88-15"><a href="fig-3.html#cb88-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(term, genus) <span class="sc">%&gt;%</span> </span>
+<span id="cb88-16"><a href="fig-3.html#cb88-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">q50 =</span> <span class="fu">median</span>(coeff)) <span class="sc">%&gt;%</span> </span>
+<span id="cb88-17"><a href="fig-3.html#cb88-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>q50) <span class="sc">%&gt;%</span> </span>
+<span id="cb88-18"><a href="fig-3.html#cb88-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(genus)</span>
+<span id="cb88-19"><a href="fig-3.html#cb88-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb88-20"><a href="fig-3.html#cb88-20" aria-hidden="true" tabindex="-1"></a>tox <span class="sc">%&gt;%</span></span>
+<span id="cb88-21"><a href="fig-3.html#cb88-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">genus =</span> <span class="fu">factor</span>(genus, <span class="at">levels =</span> post_order)) <span class="sc">%&gt;%</span> </span>
+<span id="cb88-22"><a href="fig-3.html#cb88-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> coeff, <span class="at">y =</span> grp, <span class="at">color =</span> grp)) <span class="sc">+</span></span>
+<span id="cb88-23"><a href="fig-3.html#cb88-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_pointinterval</span>(<span class="at">.width =</span> <span class="fu">c</span>(.<span class="dv">66</span>, .<span class="dv">95</span>)) <span class="sc">+</span></span>
+<span id="cb88-24"><a href="fig-3.html#cb88-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&#39;#EC0000&#39;</span>,<span class="st">&#39;#00468B&#39;</span>)) <span class="sc">+</span></span>
+<span id="cb88-25"><a href="fig-3.html#cb88-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">&#39;gray&#39;</span>, <span class="at">linetype =</span> <span class="st">&#39;dashed&#39;</span>) <span class="sc">+</span></span>
+<span id="cb88-26"><a href="fig-3.html#cb88-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(genus <span class="sc">~</span> .) <span class="sc">+</span></span>
+<span id="cb88-27"><a href="fig-3.html#cb88-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&#39;Regression coefficients&#39;</span>,</span>
+<span id="cb88-28"><a href="fig-3.html#cb88-28" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&#39;&#39;</span>) <span class="sc">+</span></span>
+<span id="cb88-29"><a href="fig-3.html#cb88-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&#39;none&#39;</span>)</span></code></pre></div>
+<p><img src="analysis_files/figure-html/unnamed-chunk-30-1.png" width="672" />
+- The above figure shows the distribution of the prior coefficients as blue lines and posterior ones as red lines, both with thicker lines to denote 66% CI and thinner lines for the 95% CI. It is observed from the figure that in our prior assumption we don’t expect positive or negative correlation between taxa and toxicity response on average. However after learning from the data the model informed us that there is a trend of Ruminococcus’s negative association with toxicity and Bacteroides’s positive association with toxicity.</p>
 </div>
 <div id="fig3j-histogram-to-illustrate-the-predicted-probability-of-toxicity" class="section level2" number="2.8">
 <h2><span class="header-section-number">2.8</span> Fig3J Histogram to illustrate the predicted probability of toxicity</h2>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="fig-3.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co"># extract posterior samples </span></span>
-<span id="cb83-2"><a href="fig-3.html#cb83-2" aria-hidden="true" tabindex="-1"></a>post <span class="ot">&lt;-</span> <span class="fu">extract.samples</span>(gtox) </span>
-<span id="cb83-3"><a href="fig-3.html#cb83-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-4"><a href="fig-3.html#cb83-4" aria-hidden="true" tabindex="-1"></a>meta_ <span class="ot">&lt;-</span> meta <span class="sc">%&gt;%</span> </span>
-<span id="cb83-5"><a href="fig-3.html#cb83-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Akkermansia<span class="sc">:</span>Ruminococcus)</span>
-<span id="cb83-6"><a href="fig-3.html#cb83-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-7"><a href="fig-3.html#cb83-7" aria-hidden="true" tabindex="-1"></a><span class="co"># the post coeffs in df format</span></span>
-<span id="cb83-8"><a href="fig-3.html#cb83-8" aria-hidden="true" tabindex="-1"></a>postdf <span class="ot">&lt;-</span> <span class="fu">bind_cols</span>(<span class="at">ba =</span> post<span class="sc">$</span>ba, <span class="at">bb =</span> post<span class="sc">$</span>bb, <span class="at">be =</span> post<span class="sc">$</span>be, <span class="at">bf =</span> post<span class="sc">$</span>bf, <span class="at">br =</span> post<span class="sc">$</span>br, <span class="at">am =</span> post<span class="sc">$</span>a[,<span class="dv">1</span>])</span>
-<span id="cb83-9"><a href="fig-3.html#cb83-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-10"><a href="fig-3.html#cb83-10" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb83-11"><a href="fig-3.html#cb83-11" aria-hidden="true" tabindex="-1"></a><span class="co"># for the top and bottom quantile range of Bacteroides relab (top and bottom 10%)</span></span>
-<span id="cb83-12"><a href="fig-3.html#cb83-12" aria-hidden="true" tabindex="-1"></a>ba_top <span class="ot">&lt;-</span> meta_ <span class="sc">%&gt;%</span> </span>
-<span id="cb83-13"><a href="fig-3.html#cb83-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Bacteroides <span class="sc">&gt;=</span> <span class="fu">quantile</span>(meta<span class="sc">$</span>Bacteroides, <span class="fl">0.9</span>))</span>
-<span id="cb83-14"><a href="fig-3.html#cb83-14" aria-hidden="true" tabindex="-1"></a>ba_bot <span class="ot">&lt;-</span> meta_ <span class="sc">%&gt;%</span> </span>
-<span id="cb83-15"><a href="fig-3.html#cb83-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Bacteroides <span class="sc">&lt;=</span> <span class="fu">quantile</span>(meta<span class="sc">$</span>Bacteroides, <span class="fl">0.1</span>))</span>
-<span id="cb83-16"><a href="fig-3.html#cb83-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-17"><a href="fig-3.html#cb83-17" aria-hidden="true" tabindex="-1"></a><span class="co"># a function to calculate the predicted probability with the randomly drawn coeff from the posterior distributionn and the log10 transformed relative abundance</span></span>
-<span id="cb83-18"><a href="fig-3.html#cb83-18" aria-hidden="true" tabindex="-1"></a>per_pt_sample_post_prob <span class="ot">&lt;-</span> <span class="cf">function</span>(lga_, lgb_, lge_, lgf_ , lgr_){</span>
-<span id="cb83-19"><a href="fig-3.html#cb83-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># the input is the log relab of the 5 genera for that patient</span></span>
-<span id="cb83-20"><a href="fig-3.html#cb83-20" aria-hidden="true" tabindex="-1"></a>  post_samp <span class="ot">&lt;-</span> postdf <span class="sc">%&gt;%</span> </span>
-<span id="cb83-21"><a href="fig-3.html#cb83-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sample_n</span>(<span class="at">size =</span> N, <span class="at">replace =</span> F)</span>
-<span id="cb83-22"><a href="fig-3.html#cb83-22" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb83-23"><a href="fig-3.html#cb83-23" aria-hidden="true" tabindex="-1"></a>  ret <span class="ot">=</span> <span class="fu">pmap</span>(post_samp, <span class="cf">function</span>(ba, bb, be, bf, br, am) {</span>
-<span id="cb83-24"><a href="fig-3.html#cb83-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">inv_logit</span>( ba <span class="sc">*</span> lga_ <span class="sc">+</span> bb <span class="sc">*</span> lgb_ <span class="sc">+</span> be <span class="sc">*</span> lge_ <span class="sc">+</span>  bf <span class="sc">*</span> lgf_ <span class="sc">+</span> br <span class="sc">*</span> lgr_ <span class="sc">+</span> am ) </span>
-<span id="cb83-25"><a href="fig-3.html#cb83-25" aria-hidden="true" tabindex="-1"></a>  }) <span class="sc">%&gt;%</span> </span>
-<span id="cb83-26"><a href="fig-3.html#cb83-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">set_names</span>(<span class="fu">seq</span>(<span class="dv">1</span>, N)) <span class="sc">%&gt;%</span> </span>
-<span id="cb83-27"><a href="fig-3.html#cb83-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">bind_rows</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb83-28"><a href="fig-3.html#cb83-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gather</span>()</span>
-<span id="cb83-29"><a href="fig-3.html#cb83-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(ret)</span>
-<span id="cb83-30"><a href="fig-3.html#cb83-30" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb83-31"><a href="fig-3.html#cb83-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-32"><a href="fig-3.html#cb83-32" aria-hidden="true" tabindex="-1"></a><span class="co"># for the top quantile patients </span></span>
-<span id="cb83-33"><a href="fig-3.html#cb83-33" aria-hidden="true" tabindex="-1"></a>res_top <span class="ot">&lt;-</span> <span class="fu">pmap</span>(ba_top, <span class="cf">function</span>(Akkermansia, Bacteroides, Enterococcus, Faecalibacterium, Ruminococcus){</span>
-<span id="cb83-34"><a href="fig-3.html#cb83-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">per_pt_sample_post_prob</span>(Akkermansia, Bacteroides, Enterococcus, Faecalibacterium, Ruminococcus)</span>
-<span id="cb83-35"><a href="fig-3.html#cb83-35" aria-hidden="true" tabindex="-1"></a>}) <span class="sc">%&gt;%</span> </span>
-<span id="cb83-36"><a href="fig-3.html#cb83-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_names</span>(<span class="fu">paste</span>(<span class="st">&#39;P&#39;</span>, <span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">nrow</span>(ba_top)), <span class="at">sep =</span> <span class="st">&#39;&#39;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb83-37"><a href="fig-3.html#cb83-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(<span class="at">.id =</span> <span class="st">&#39;pt&#39;</span>)</span>
-<span id="cb83-38"><a href="fig-3.html#cb83-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-39"><a href="fig-3.html#cb83-39" aria-hidden="true" tabindex="-1"></a><span class="co"># for the bottom quantile patients  </span></span>
-<span id="cb83-40"><a href="fig-3.html#cb83-40" aria-hidden="true" tabindex="-1"></a>res_bot <span class="ot">&lt;-</span> <span class="fu">pmap</span>(ba_bot, <span class="cf">function</span>(Akkermansia, Bacteroides, Enterococcus, Faecalibacterium, Ruminococcus){</span>
-<span id="cb83-41"><a href="fig-3.html#cb83-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">per_pt_sample_post_prob</span>(Akkermansia, Bacteroides, Enterococcus, Faecalibacterium, Ruminococcus)</span>
-<span id="cb83-42"><a href="fig-3.html#cb83-42" aria-hidden="true" tabindex="-1"></a>}) <span class="sc">%&gt;%</span> </span>
-<span id="cb83-43"><a href="fig-3.html#cb83-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_names</span>(<span class="fu">paste</span>(<span class="st">&#39;P&#39;</span>, <span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">nrow</span>(ba_bot)), <span class="at">sep =</span> <span class="st">&#39;&#39;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb83-44"><a href="fig-3.html#cb83-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(<span class="at">.id =</span> <span class="st">&#39;pt&#39;</span>) </span>
-<span id="cb83-45"><a href="fig-3.html#cb83-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-46"><a href="fig-3.html#cb83-46" aria-hidden="true" tabindex="-1"></a><span class="co"># plot them together in one </span></span>
-<span id="cb83-47"><a href="fig-3.html#cb83-47" aria-hidden="true" tabindex="-1"></a>bacteroides <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
-<span id="cb83-48"><a href="fig-3.html#cb83-48" aria-hidden="true" tabindex="-1"></a>  res_top <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">grp =</span> <span class="st">&#39;top&#39;</span>),</span>
-<span id="cb83-49"><a href="fig-3.html#cb83-49" aria-hidden="true" tabindex="-1"></a>  res_bot <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">grp =</span> <span class="st">&#39;bot&#39;</span>)</span>
-<span id="cb83-50"><a href="fig-3.html#cb83-50" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
-<span id="cb83-51"><a href="fig-3.html#cb83-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gghistogram</span>(<span class="at">x =</span> <span class="st">&#39;value&#39;</span>,<span class="at">bins =</span> <span class="dv">30</span>, <span class="at">fill =</span> <span class="st">&#39;grp&#39;</span>, <span class="at">palette =</span> <span class="st">&#39;nejm&#39;</span>, <span class="at">color =</span> <span class="st">&#39;white&#39;</span>, <span class="at">add =</span> <span class="st">&#39;mean&#39;</span>,</span>
-<span id="cb83-52"><a href="fig-3.html#cb83-52" aria-hidden="true" tabindex="-1"></a>                  <span class="at">xlab =</span> <span class="st">&#39;Predicted probability of Toxicity&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;Probability density&#39;</span>) </span>
-<span id="cb83-53"><a href="fig-3.html#cb83-53" aria-hidden="true" tabindex="-1"></a>bacteroides  </span></code></pre></div>
-<p><img src="analysis_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="fig-3.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&#39;figs/predicted_tox_bacteroides_top_bottom_10.pdf&#39;</span>, <span class="at">width =</span> <span class="dv">7</span>, <span class="at">height =</span> <span class="dv">5</span>, <span class="at">plot =</span> bacteroides)</span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="fig-3.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="co"># extract posterior samples </span></span>
+<span id="cb89-2"><a href="fig-3.html#cb89-2" aria-hidden="true" tabindex="-1"></a>post <span class="ot">&lt;-</span> <span class="fu">extract.samples</span>(gtox) </span>
+<span id="cb89-3"><a href="fig-3.html#cb89-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb89-4"><a href="fig-3.html#cb89-4" aria-hidden="true" tabindex="-1"></a>meta_ <span class="ot">&lt;-</span> meta <span class="sc">%&gt;%</span> </span>
+<span id="cb89-5"><a href="fig-3.html#cb89-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Akkermansia<span class="sc">:</span>Ruminococcus)</span>
+<span id="cb89-6"><a href="fig-3.html#cb89-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb89-7"><a href="fig-3.html#cb89-7" aria-hidden="true" tabindex="-1"></a><span class="co"># the post coeffs in df format</span></span>
+<span id="cb89-8"><a href="fig-3.html#cb89-8" aria-hidden="true" tabindex="-1"></a>postdf <span class="ot">&lt;-</span> <span class="fu">bind_cols</span>(<span class="at">ba =</span> post<span class="sc">$</span>ba, <span class="at">bb =</span> post<span class="sc">$</span>bb, <span class="at">be =</span> post<span class="sc">$</span>be, <span class="at">bf =</span> post<span class="sc">$</span>bf, <span class="at">br =</span> post<span class="sc">$</span>br, <span class="at">am =</span> post<span class="sc">$</span>a[,<span class="dv">1</span>])</span>
+<span id="cb89-9"><a href="fig-3.html#cb89-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb89-10"><a href="fig-3.html#cb89-10" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb89-11"><a href="fig-3.html#cb89-11" aria-hidden="true" tabindex="-1"></a><span class="co"># for the top and bottom quantile range of Bacteroides relab (top and bottom 10%)</span></span>
+<span id="cb89-12"><a href="fig-3.html#cb89-12" aria-hidden="true" tabindex="-1"></a>ba_top <span class="ot">&lt;-</span> meta_ <span class="sc">%&gt;%</span> </span>
+<span id="cb89-13"><a href="fig-3.html#cb89-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Bacteroides <span class="sc">&gt;=</span> <span class="fu">quantile</span>(meta<span class="sc">$</span>Bacteroides, <span class="fl">0.9</span>))</span>
+<span id="cb89-14"><a href="fig-3.html#cb89-14" aria-hidden="true" tabindex="-1"></a>ba_bot <span class="ot">&lt;-</span> meta_ <span class="sc">%&gt;%</span> </span>
+<span id="cb89-15"><a href="fig-3.html#cb89-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Bacteroides <span class="sc">&lt;=</span> <span class="fu">quantile</span>(meta<span class="sc">$</span>Bacteroides, <span class="fl">0.1</span>))</span>
+<span id="cb89-16"><a href="fig-3.html#cb89-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb89-17"><a href="fig-3.html#cb89-17" aria-hidden="true" tabindex="-1"></a><span class="co"># a function to calculate the predicted probability with the randomly drawn coeff from the posterior distributionn and the log10 transformed relative abundance</span></span>
+<span id="cb89-18"><a href="fig-3.html#cb89-18" aria-hidden="true" tabindex="-1"></a>per_pt_sample_post_prob <span class="ot">&lt;-</span> <span class="cf">function</span>(lga_, lgb_, lge_, lgf_ , lgr_){</span>
+<span id="cb89-19"><a href="fig-3.html#cb89-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># the input is the log relab of the 5 genera for that patient</span></span>
+<span id="cb89-20"><a href="fig-3.html#cb89-20" aria-hidden="true" tabindex="-1"></a>  post_samp <span class="ot">&lt;-</span> postdf <span class="sc">%&gt;%</span> </span>
+<span id="cb89-21"><a href="fig-3.html#cb89-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sample_n</span>(<span class="at">size =</span> N, <span class="at">replace =</span> F)</span>
+<span id="cb89-22"><a href="fig-3.html#cb89-22" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb89-23"><a href="fig-3.html#cb89-23" aria-hidden="true" tabindex="-1"></a>  ret <span class="ot">=</span> <span class="fu">pmap</span>(post_samp, <span class="cf">function</span>(ba, bb, be, bf, br, am) {</span>
+<span id="cb89-24"><a href="fig-3.html#cb89-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">inv_logit</span>( ba <span class="sc">*</span> lga_ <span class="sc">+</span> bb <span class="sc">*</span> lgb_ <span class="sc">+</span> be <span class="sc">*</span> lge_ <span class="sc">+</span>  bf <span class="sc">*</span> lgf_ <span class="sc">+</span> br <span class="sc">*</span> lgr_ <span class="sc">+</span> am ) </span>
+<span id="cb89-25"><a href="fig-3.html#cb89-25" aria-hidden="true" tabindex="-1"></a>  }) <span class="sc">%&gt;%</span> </span>
+<span id="cb89-26"><a href="fig-3.html#cb89-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">set_names</span>(<span class="fu">seq</span>(<span class="dv">1</span>, N)) <span class="sc">%&gt;%</span> </span>
+<span id="cb89-27"><a href="fig-3.html#cb89-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">bind_rows</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb89-28"><a href="fig-3.html#cb89-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gather</span>()</span>
+<span id="cb89-29"><a href="fig-3.html#cb89-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(ret)</span>
+<span id="cb89-30"><a href="fig-3.html#cb89-30" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb89-31"><a href="fig-3.html#cb89-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb89-32"><a href="fig-3.html#cb89-32" aria-hidden="true" tabindex="-1"></a><span class="co"># for the top quantile patients </span></span>
+<span id="cb89-33"><a href="fig-3.html#cb89-33" aria-hidden="true" tabindex="-1"></a>res_top <span class="ot">&lt;-</span> <span class="fu">pmap</span>(ba_top, <span class="cf">function</span>(Akkermansia, Bacteroides, Enterococcus, Faecalibacterium, Ruminococcus){</span>
+<span id="cb89-34"><a href="fig-3.html#cb89-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">per_pt_sample_post_prob</span>(Akkermansia, Bacteroides, Enterococcus, Faecalibacterium, Ruminococcus)</span>
+<span id="cb89-35"><a href="fig-3.html#cb89-35" aria-hidden="true" tabindex="-1"></a>}) <span class="sc">%&gt;%</span> </span>
+<span id="cb89-36"><a href="fig-3.html#cb89-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_names</span>(<span class="fu">paste</span>(<span class="st">&#39;P&#39;</span>, <span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">nrow</span>(ba_top)), <span class="at">sep =</span> <span class="st">&#39;&#39;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb89-37"><a href="fig-3.html#cb89-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(<span class="at">.id =</span> <span class="st">&#39;pt&#39;</span>)</span>
+<span id="cb89-38"><a href="fig-3.html#cb89-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb89-39"><a href="fig-3.html#cb89-39" aria-hidden="true" tabindex="-1"></a><span class="co"># for the bottom quantile patients  </span></span>
+<span id="cb89-40"><a href="fig-3.html#cb89-40" aria-hidden="true" tabindex="-1"></a>res_bot <span class="ot">&lt;-</span> <span class="fu">pmap</span>(ba_bot, <span class="cf">function</span>(Akkermansia, Bacteroides, Enterococcus, Faecalibacterium, Ruminococcus){</span>
+<span id="cb89-41"><a href="fig-3.html#cb89-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">per_pt_sample_post_prob</span>(Akkermansia, Bacteroides, Enterococcus, Faecalibacterium, Ruminococcus)</span>
+<span id="cb89-42"><a href="fig-3.html#cb89-42" aria-hidden="true" tabindex="-1"></a>}) <span class="sc">%&gt;%</span> </span>
+<span id="cb89-43"><a href="fig-3.html#cb89-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_names</span>(<span class="fu">paste</span>(<span class="st">&#39;P&#39;</span>, <span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">nrow</span>(ba_bot)), <span class="at">sep =</span> <span class="st">&#39;&#39;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb89-44"><a href="fig-3.html#cb89-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(<span class="at">.id =</span> <span class="st">&#39;pt&#39;</span>) </span>
+<span id="cb89-45"><a href="fig-3.html#cb89-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb89-46"><a href="fig-3.html#cb89-46" aria-hidden="true" tabindex="-1"></a><span class="co"># plot them together in one </span></span>
+<span id="cb89-47"><a href="fig-3.html#cb89-47" aria-hidden="true" tabindex="-1"></a>bacteroides <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
+<span id="cb89-48"><a href="fig-3.html#cb89-48" aria-hidden="true" tabindex="-1"></a>  res_top <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">grp =</span> <span class="st">&#39;top&#39;</span>),</span>
+<span id="cb89-49"><a href="fig-3.html#cb89-49" aria-hidden="true" tabindex="-1"></a>  res_bot <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">grp =</span> <span class="st">&#39;bot&#39;</span>)</span>
+<span id="cb89-50"><a href="fig-3.html#cb89-50" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb89-51"><a href="fig-3.html#cb89-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gghistogram</span>(<span class="at">x =</span> <span class="st">&#39;value&#39;</span>,<span class="at">bins =</span> <span class="dv">30</span>, <span class="at">fill =</span> <span class="st">&#39;grp&#39;</span>, <span class="at">palette =</span> <span class="st">&#39;nejm&#39;</span>, <span class="at">color =</span> <span class="st">&#39;white&#39;</span>, <span class="at">add =</span> <span class="st">&#39;mean&#39;</span>,</span>
+<span id="cb89-52"><a href="fig-3.html#cb89-52" aria-hidden="true" tabindex="-1"></a>                  <span class="at">xlab =</span> <span class="st">&#39;Predicted probability of Toxicity&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;Probability density&#39;</span>) </span>
+<span id="cb89-53"><a href="fig-3.html#cb89-53" aria-hidden="true" tabindex="-1"></a>bacteroides  </span></code></pre></div>
+<p><img src="analysis_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="fig-3.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&#39;figs/predicted_tox_bacteroides_top_bottom_10.pdf&#39;</span>, <span class="at">width =</span> <span class="dv">7</span>, <span class="at">height =</span> <span class="dv">5</span>, <span class="at">plot =</span> bacteroides)</span></code></pre></div>
 <p>As can be observed from the histogram, when the patients have high Bacteroides content (relative abundance in the top 10% of the current patient cohort), they are predicted to almost always have a toxicity response: the histogram amassed on the right side of 0.5; whereas when the patients have low Bacteroides content (relative abundance in the bottom 10% of the current patient cohort), the patients are predicted to have no inclination towards whether or not to have a toxicity response.</p>
 </div>
 <div id="fig-3k-lefse-of-pathway-abundance-using-shotgun-data" class="section level2" number="2.9">
 <h2><span class="header-section-number">2.9</span> Fig 3K lefse of pathway abundance using shotgun data</h2>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="fig-3.html#cb85-1" aria-hidden="true" tabindex="-1"></a>simple <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;data/shotgun/final_comprehensive_UPDATED_simple.csv&#39;</span>)</span>
-<span id="cb85-2"><a href="fig-3.html#cb85-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb85-3"><a href="fig-3.html#cb85-3" aria-hidden="true" tabindex="-1"></a>pheno <span class="ot">&lt;-</span> simple <span class="sc">%&gt;%</span> </span>
-<span id="cb85-4"><a href="fig-3.html#cb85-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(<span class="st">&#39;pheno&#39;</span>, <span class="st">&#39;value&#39;</span>, cr_d100<span class="sc">:</span>toxicity) </span>
-<span id="cb85-5"><a href="fig-3.html#cb85-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb85-6"><a href="fig-3.html#cb85-6" aria-hidden="true" tabindex="-1"></a><span class="co"># the pathway counts table</span></span>
-<span id="cb85-7"><a href="fig-3.html#cb85-7" aria-hidden="true" tabindex="-1"></a>full <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">&#39;data/shotgun/humann3_pathabundance_cpm_joined_unstratified.tsv&#39;</span>)  <span class="sc">%&gt;%</span> </span>
-<span id="cb85-8"><a href="fig-3.html#cb85-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename_all</span>(<span class="fu">funs</span>(<span class="fu">str_replace</span>(., <span class="st">&#39;^CART_&#39;</span>,<span class="st">&#39;&#39;</span>)))  <span class="sc">%&gt;%</span> </span>
-<span id="cb85-9"><a href="fig-3.html#cb85-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename_all</span>(<span class="fu">funs</span>(<span class="fu">str_replace</span>(., <span class="st">&#39;_humann3$&#39;</span>,<span class="st">&#39;&#39;</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="fig-3.html#cb91-1" aria-hidden="true" tabindex="-1"></a>simple <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;data/shotgun/final_comprehensive_UPDATED_simple.csv&#39;</span>)</span>
+<span id="cb91-2"><a href="fig-3.html#cb91-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-3"><a href="fig-3.html#cb91-3" aria-hidden="true" tabindex="-1"></a>pheno <span class="ot">&lt;-</span> simple <span class="sc">%&gt;%</span> </span>
+<span id="cb91-4"><a href="fig-3.html#cb91-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(<span class="st">&#39;pheno&#39;</span>, <span class="st">&#39;value&#39;</span>, cr_d100<span class="sc">:</span>toxicity) </span>
+<span id="cb91-5"><a href="fig-3.html#cb91-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-6"><a href="fig-3.html#cb91-6" aria-hidden="true" tabindex="-1"></a><span class="co"># the pathway counts table</span></span>
+<span id="cb91-7"><a href="fig-3.html#cb91-7" aria-hidden="true" tabindex="-1"></a>full <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">&#39;data/shotgun/humann3_pathabundance_cpm_joined_unstratified.tsv&#39;</span>)  <span class="sc">%&gt;%</span> </span>
+<span id="cb91-8"><a href="fig-3.html#cb91-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename_all</span>(<span class="fu">funs</span>(<span class="fu">str_replace</span>(., <span class="st">&#39;^CART_&#39;</span>,<span class="st">&#39;&#39;</span>)))  <span class="sc">%&gt;%</span> </span>
+<span id="cb91-9"><a href="fig-3.html#cb91-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename_all</span>(<span class="fu">funs</span>(<span class="fu">str_replace</span>(., <span class="st">&#39;_humann3$&#39;</span>,<span class="st">&#39;&#39;</span>)))</span></code></pre></div>
 <pre><code>## Warning: `funs()` was deprecated in dplyr 0.8.0.
 ## Please use a list of either functions or lambdas: 
 ## 
@@ -1315,162 +1458,162 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ##   # Using lambdas
 ##   list(~ mean(., trim = .2), ~ median(., na.rm = TRUE))</code></pre>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="fig-3.html#cb87-1" aria-hidden="true" tabindex="-1"></a>all_sub_pheno <span class="ot">&lt;-</span> pheno <span class="sc">%&gt;%</span> </span>
-<span id="cb87-2"><a href="fig-3.html#cb87-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">split</span>(., <span class="fu">list</span>(.<span class="sc">$</span>pheno)) <span class="sc">%&gt;%</span> </span>
-<span id="cb87-3"><a href="fig-3.html#cb87-3" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">imap</span>(<span class="sc">~</span> <span class="fu">filter</span>(<span class="at">.data =</span> ., value <span class="sc">!=</span> <span class="st">&#39;not_assessed&#39;</span>))</span>
-<span id="cb87-4"><a href="fig-3.html#cb87-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb87-5"><a href="fig-3.html#cb87-5" aria-hidden="true" tabindex="-1"></a>all_sub_pheno <span class="sc">%&gt;%</span> </span>
-<span id="cb87-6"><a href="fig-3.html#cb87-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">imap</span>(<span class="cf">function</span>(.x, .y){</span>
-<span id="cb87-7"><a href="fig-3.html#cb87-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="at">.data =</span> .x, value) <span class="sc">%&gt;%</span> </span>
-<span id="cb87-8"><a href="fig-3.html#cb87-8" aria-hidden="true" tabindex="-1"></a>      <span class="fu">t</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb87-9"><a href="fig-3.html#cb87-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">write.table</span>(<span class="fu">str_glue</span>(<span class="st">&#39;data/shotgun/pull_{.y}.txt&#39;</span>), <span class="at">sep =</span> <span class="st">&#39;</span><span class="sc">\t</span><span class="st">&#39;</span>, <span class="at">quote =</span> F, <span class="at">row.names =</span> T, <span class="at">col.names =</span> F)</span>
-<span id="cb87-10"><a href="fig-3.html#cb87-10" aria-hidden="true" tabindex="-1"></a>  })</span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="fig-3.html#cb93-1" aria-hidden="true" tabindex="-1"></a>all_sub_pheno <span class="ot">&lt;-</span> pheno <span class="sc">%&gt;%</span> </span>
+<span id="cb93-2"><a href="fig-3.html#cb93-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">split</span>(., <span class="fu">list</span>(.<span class="sc">$</span>pheno)) <span class="sc">%&gt;%</span> </span>
+<span id="cb93-3"><a href="fig-3.html#cb93-3" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">imap</span>(<span class="sc">~</span> <span class="fu">filter</span>(<span class="at">.data =</span> ., value <span class="sc">!=</span> <span class="st">&#39;not_assessed&#39;</span>))</span>
+<span id="cb93-4"><a href="fig-3.html#cb93-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb93-5"><a href="fig-3.html#cb93-5" aria-hidden="true" tabindex="-1"></a>all_sub_pheno <span class="sc">%&gt;%</span> </span>
+<span id="cb93-6"><a href="fig-3.html#cb93-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">imap</span>(<span class="cf">function</span>(.x, .y){</span>
+<span id="cb93-7"><a href="fig-3.html#cb93-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="at">.data =</span> .x, value) <span class="sc">%&gt;%</span> </span>
+<span id="cb93-8"><a href="fig-3.html#cb93-8" aria-hidden="true" tabindex="-1"></a>      <span class="fu">t</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb93-9"><a href="fig-3.html#cb93-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">write.table</span>(<span class="fu">str_glue</span>(<span class="st">&#39;data/shotgun/pull_{.y}.txt&#39;</span>), <span class="at">sep =</span> <span class="st">&#39;</span><span class="sc">\t</span><span class="st">&#39;</span>, <span class="at">quote =</span> F, <span class="at">row.names =</span> T, <span class="at">col.names =</span> F)</span>
+<span id="cb93-10"><a href="fig-3.html#cb93-10" aria-hidden="true" tabindex="-1"></a>  })</span></code></pre></div>
 <pre><code>## $cr_d100
 ## NULL
 ## 
 ## $toxicity
 ## NULL</code></pre>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="fig-3.html#cb89-1" aria-hidden="true" tabindex="-1"></a>all_pcts <span class="ot">&lt;-</span> all_sub_pheno <span class="sc">%&gt;%</span> </span>
-<span id="cb89-2"><a href="fig-3.html#cb89-2" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">map</span>(<span class="sc">~</span> <span class="fu">pull</span>(<span class="at">.data =</span> ., fid) ) <span class="sc">%&gt;%</span> </span>
-<span id="cb89-3"><a href="fig-3.html#cb89-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">imap</span>(<span class="sc">~</span> full <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="st">`</span><span class="at"># Pathway</span><span class="st">`</span>, <span class="fu">matches</span>(.x)) <span class="sc">%&gt;%</span> </span>
-<span id="cb89-4"><a href="fig-3.html#cb89-4" aria-hidden="true" tabindex="-1"></a>         <span class="fu">write_tsv</span>(<span class="fu">str_glue</span>(<span class="st">&#39;data/shotgun/pull_{.y}_pcts.tsv&#39;</span>)))</span>
-<span id="cb89-5"><a href="fig-3.html#cb89-5" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb89-6"><a href="fig-3.html#cb89-6" aria-hidden="true" tabindex="-1"></a><span class="co"># then move to Snakemake do the normalization and the split</span></span></code></pre></div>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="fig-3.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add a filtering step here </span></span>
-<span id="cb90-2"><a href="fig-3.html#cb90-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 50 and 25% </span></span>
-<span id="cb90-3"><a href="fig-3.html#cb90-3" aria-hidden="true" tabindex="-1"></a>pcts <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">&#39;data/shotgun/pull_cr_d100_pcts_cpm_unstratified.tsv&#39;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb90-4"><a href="fig-3.html#cb90-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(<span class="st">&#39;sampleid&#39;</span>, <span class="st">&#39;cpm&#39;</span>, <span class="fu">names</span>(.)[<span class="dv">2</span>]<span class="sc">:</span><span class="fu">names</span>(.)[<span class="fu">ncol</span>(.)]) <span class="sc">%&gt;%</span> </span>
-<span id="cb90-5"><a href="fig-3.html#cb90-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">pw =</span> <span class="st">`</span><span class="at"># Pathway</span><span class="st">`</span>)</span>
-<span id="cb90-6"><a href="fig-3.html#cb90-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-7"><a href="fig-3.html#cb90-7" aria-hidden="true" tabindex="-1"></a>keeppw <span class="ot">&lt;-</span> pcts <span class="sc">%&gt;%</span> </span>
-<span id="cb90-8"><a href="fig-3.html#cb90-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(cpm <span class="sc">&gt;</span> <span class="dv">50</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb90-9"><a href="fig-3.html#cb90-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb90-10"><a href="fig-3.html#cb90-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(pw) <span class="sc">%&gt;%</span> </span>
-<span id="cb90-11"><a href="fig-3.html#cb90-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="fu">floor</span>(<span class="fu">nrow</span>(simple) <span class="sc">*</span> <span class="fl">0.25</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb90-12"><a href="fig-3.html#cb90-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(pw)</span>
-<span id="cb90-13"><a href="fig-3.html#cb90-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-14"><a href="fig-3.html#cb90-14" aria-hidden="true" tabindex="-1"></a>cts_fil <span class="ot">&lt;-</span> pcts <span class="sc">%&gt;%</span> </span>
-<span id="cb90-15"><a href="fig-3.html#cb90-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(pw <span class="sc">%in%</span> keeppw) <span class="sc">%&gt;%</span> </span>
-<span id="cb90-16"><a href="fig-3.html#cb90-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(<span class="st">&#39;sampleid&#39;</span>, <span class="st">&#39;cpm&#39;</span>, <span class="at">fill =</span> <span class="dv">0</span>)</span>
-<span id="cb90-17"><a href="fig-3.html#cb90-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-18"><a href="fig-3.html#cb90-18" aria-hidden="true" tabindex="-1"></a>cts_fil <span class="sc">%&gt;%</span> </span>
-<span id="cb90-19"><a href="fig-3.html#cb90-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_tsv</span>(<span class="st">&#39;data/shotgun/pull_cr_d100_pcts_cpm_unstratified_fil.tsv&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="fig-3.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tox</span></span>
-<span id="cb91-2"><a href="fig-3.html#cb91-2" aria-hidden="true" tabindex="-1"></a>pcts <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">&#39;data/shotgun/pull_toxicity_pcts_cpm_unstratified.tsv&#39;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb91-3"><a href="fig-3.html#cb91-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(<span class="st">&#39;sampleid&#39;</span>, <span class="st">&#39;cpm&#39;</span>, <span class="fu">names</span>(.)[<span class="dv">2</span>]<span class="sc">:</span><span class="fu">names</span>(.)[<span class="fu">ncol</span>(.)]) <span class="sc">%&gt;%</span> </span>
-<span id="cb91-4"><a href="fig-3.html#cb91-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">pw =</span> <span class="st">`</span><span class="at"># Pathway</span><span class="st">`</span>)</span>
-<span id="cb91-5"><a href="fig-3.html#cb91-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb91-6"><a href="fig-3.html#cb91-6" aria-hidden="true" tabindex="-1"></a>keeppw <span class="ot">&lt;-</span> pcts <span class="sc">%&gt;%</span> </span>
-<span id="cb91-7"><a href="fig-3.html#cb91-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(cpm <span class="sc">&gt;</span> <span class="dv">50</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb91-8"><a href="fig-3.html#cb91-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb91-9"><a href="fig-3.html#cb91-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(pw) <span class="sc">%&gt;%</span> </span>
-<span id="cb91-10"><a href="fig-3.html#cb91-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="fu">floor</span>(<span class="fu">nrow</span>(simple) <span class="sc">*</span> <span class="fl">0.25</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb91-11"><a href="fig-3.html#cb91-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(pw)</span>
-<span id="cb91-12"><a href="fig-3.html#cb91-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb91-13"><a href="fig-3.html#cb91-13" aria-hidden="true" tabindex="-1"></a>cts_fil <span class="ot">&lt;-</span> pcts <span class="sc">%&gt;%</span> </span>
-<span id="cb91-14"><a href="fig-3.html#cb91-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(pw <span class="sc">%in%</span> keeppw) <span class="sc">%&gt;%</span> </span>
-<span id="cb91-15"><a href="fig-3.html#cb91-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(<span class="st">&#39;sampleid&#39;</span>, <span class="st">&#39;cpm&#39;</span>, <span class="at">fill =</span> <span class="dv">0</span>)</span>
-<span id="cb91-16"><a href="fig-3.html#cb91-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb91-17"><a href="fig-3.html#cb91-17" aria-hidden="true" tabindex="-1"></a>cts_fil <span class="sc">%&gt;%</span> </span>
-<span id="cb91-18"><a href="fig-3.html#cb91-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_tsv</span>(<span class="st">&#39;data/shotgun/pull_toxicity_pcts_cpm_unstratified_fil.tsv&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="fig-3.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="co"># PATHWAY</span></span>
-<span id="cb92-2"><a href="fig-3.html#cb92-2" aria-hidden="true" tabindex="-1"></a><span class="co"># I already normalized the pcts so don&#39;t need to normalize again here </span></span>
-<span id="cb92-3"><a href="fig-3.html#cb92-3" aria-hidden="true" tabindex="-1"></a>fns <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">&#39;data/shotgun/&#39;</span>, <span class="at">pattern =</span> <span class="st">&#39;lefse_ready_pcts.tsv$&#39;</span>)</span>
-<span id="cb92-4"><a href="fig-3.html#cb92-4" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb92-5"><a href="fig-3.html#cb92-5" aria-hidden="true" tabindex="-1"></a>cmds <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb92-6"><a href="fig-3.html#cb92-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">fns =</span> fns</span>
-<span id="cb92-7"><a href="fig-3.html#cb92-7" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
-<span id="cb92-8"><a href="fig-3.html#cb92-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">format_cmd =</span> <span class="fu">str_glue</span>(<span class="st">&#39;lefse_format_input.py {fns}  {fns}.in -c 1 -u 2&#39;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb92-9"><a href="fig-3.html#cb92-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">run_cmd =</span> <span class="fu">str_glue</span>(<span class="st">&#39;lefse_run.py {fns}.in  {fns}.res&#39;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb92-10"><a href="fig-3.html#cb92-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">plot_cmd =</span> <span class="fu">str_glue</span>(<span class="st">&#39;lefse_plot_res.py {fns}.res {fns}.pdf --format pdf  --feature_font_size 4 --width 10 --dpi 300 --title {fns}&#39;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb92-11"><a href="fig-3.html#cb92-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>fns) <span class="sc">%&gt;%</span> </span>
-<span id="cb92-12"><a href="fig-3.html#cb92-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb92-13"><a href="fig-3.html#cb92-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(value) <span class="sc">%&gt;%</span> </span>
-<span id="cb92-14"><a href="fig-3.html#cb92-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_csv</span>(<span class="st">&#39;data/shotgun/lefse_run_cmd.sh&#39;</span>, <span class="at">col_names =</span> F)</span></code></pre></div>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="fig-3.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the pathway results</span></span>
-<span id="cb93-2"><a href="fig-3.html#cb93-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vdbR)</span>
-<span id="cb93-3"><a href="fig-3.html#cb93-3" aria-hidden="true" tabindex="-1"></a><span class="fu">connect_database</span>(<span class="st">&#39;~/dbConfig.txt&#39;</span>)</span>
-<span id="cb93-4"><a href="fig-3.html#cb93-4" aria-hidden="true" tabindex="-1"></a><span class="fu">get_table_from_database</span>(<span class="st">&#39;metacyc_pathway_name&#39;</span>)</span>
-<span id="cb93-5"><a href="fig-3.html#cb93-5" aria-hidden="true" tabindex="-1"></a><span class="fu">get_table_from_database</span>(<span class="st">&#39;metacyc_pathway_ontology&#39;</span>)</span>
-<span id="cb93-6"><a href="fig-3.html#cb93-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb93-7"><a href="fig-3.html#cb93-7" aria-hidden="true" tabindex="-1"></a>fns <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">&#39;data/shotgun/&#39;</span>, <span class="at">pattern =</span> <span class="st">&#39;lefse_ready_pcts.tsv.res$&#39;</span>, <span class="at">full.names =</span> T)</span>
-<span id="cb93-8"><a href="fig-3.html#cb93-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb93-9"><a href="fig-3.html#cb93-9" aria-hidden="true" tabindex="-1"></a>feature <span class="ot">&lt;-</span> fns <span class="sc">%&gt;%</span> </span>
-<span id="cb93-10"><a href="fig-3.html#cb93-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_names</span>(fns) <span class="sc">%&gt;%</span> </span>
-<span id="cb93-11"><a href="fig-3.html#cb93-11" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">map</span>(<span class="sc">~</span> <span class="fu">read_tsv</span>(., <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">&#39;pathway&#39;</span>,<span class="st">&#39;xx&#39;</span>,<span class="st">&#39;direction&#39;</span>,<span class="st">&#39;score&#39;</span>,<span class="st">&#39;pval&#39;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb93-12"><a href="fig-3.html#cb93-12" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(score))) <span class="sc">%&gt;%</span> </span>
-<span id="cb93-13"><a href="fig-3.html#cb93-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(<span class="at">.id =</span> <span class="st">&#39;group&#39;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb93-14"><a href="fig-3.html#cb93-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">str_replace</span>(group, <span class="st">&#39;data/shotgun//&#39;</span>,<span class="st">&#39;&#39;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb93-15"><a href="fig-3.html#cb93-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">str_replace</span>(group, <span class="st">&#39;_lefse_ready_pcts.tsv.res$&#39;</span>,<span class="st">&#39;&#39;</span>)) </span>
-<span id="cb93-16"><a href="fig-3.html#cb93-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb93-17"><a href="fig-3.html#cb93-17" aria-hidden="true" tabindex="-1"></a><span class="co"># change the &quot;N&quot; direction to be minus score</span></span>
-<span id="cb93-18"><a href="fig-3.html#cb93-18" aria-hidden="true" tabindex="-1"></a>feature <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
-<span id="cb93-19"><a href="fig-3.html#cb93-19" aria-hidden="true" tabindex="-1"></a>  feature <span class="sc">%&gt;%</span> </span>
-<span id="cb93-20"><a href="fig-3.html#cb93-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">split</span>(.<span class="sc">$</span>direction) <span class="sc">%&gt;%</span> </span>
-<span id="cb93-21"><a href="fig-3.html#cb93-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pluck</span>(<span class="st">&#39;no&#39;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb93-22"><a href="fig-3.html#cb93-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">score =</span> <span class="sc">-</span>score),</span>
-<span id="cb93-23"><a href="fig-3.html#cb93-23" aria-hidden="true" tabindex="-1"></a>  feature <span class="sc">%&gt;%</span> </span>
-<span id="cb93-24"><a href="fig-3.html#cb93-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">split</span>(.<span class="sc">$</span>direction) <span class="sc">%&gt;%</span> </span>
-<span id="cb93-25"><a href="fig-3.html#cb93-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pluck</span>(<span class="st">&#39;yes&#39;</span>)  </span>
-<span id="cb93-26"><a href="fig-3.html#cb93-26" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
-<span id="cb93-27"><a href="fig-3.html#cb93-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(group, pathway, score) <span class="sc">%&gt;%</span> </span>
-<span id="cb93-28"><a href="fig-3.html#cb93-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pwid =</span> <span class="fu">str_extract</span>(pathway, <span class="st">&#39;^.+_PWY|^PWY.*_</span><span class="sc">\\</span><span class="st">d{3,4}&#39;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb93-29"><a href="fig-3.html#cb93-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pwid =</span> <span class="fu">str_replace_all</span>(pwid, <span class="st">&#39;_&#39;</span>, <span class="st">&#39;-&#39;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb93-30"><a href="fig-3.html#cb93-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pwid =</span> <span class="fu">if_else</span>(<span class="fu">str_detect</span>(pathway, <span class="st">&#39;^TCA&#39;</span>), <span class="st">&#39;TCA&#39;</span>, pwid)) <span class="sc">%&gt;%</span> </span>
-<span id="cb93-31"><a href="fig-3.html#cb93-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pwid =</span> <span class="fu">if_else</span>(<span class="fu">str_detect</span>(pathway, <span class="st">&#39;^NAD&#39;</span>), <span class="st">&#39;NAD-BIOSYNTHESIS-II&#39;</span>, pwid)) <span class="sc">%&gt;%</span> </span>
-<span id="cb93-32"><a href="fig-3.html#cb93-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(metacyc_pathway_name <span class="sc">%&gt;%</span> <span class="fu">select</span>(pwid, pw_name)) <span class="sc">%&gt;%</span> </span>
-<span id="cb93-33"><a href="fig-3.html#cb93-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(metacyc_pathway_ontology <span class="sc">%&gt;%</span> <span class="fu">select</span>(pwid, l4<span class="sc">:</span>l9))</span>
-<span id="cb93-34"><a href="fig-3.html#cb93-34" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb93-35"><a href="fig-3.html#cb93-35" aria-hidden="true" tabindex="-1"></a>all_title_fs <span class="ot">&lt;-</span> <span class="dv">20</span></span>
-<span id="cb93-36"><a href="fig-3.html#cb93-36" aria-hidden="true" tabindex="-1"></a>axis_text_fs <span class="ot">&lt;-</span> <span class="dv">16</span></span>
-<span id="cb93-37"><a href="fig-3.html#cb93-37" aria-hidden="true" tabindex="-1"></a>CR <span class="ot">&lt;-</span> feature <span class="sc">%&gt;%</span> </span>
-<span id="cb93-38"><a href="fig-3.html#cb93-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">&#39;pull_cr_d100&#39;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb93-39"><a href="fig-3.html#cb93-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(pathway, score), <span class="at">y =</span> score, <span class="at">fill =</span> direction)) <span class="sc">+</span></span>
-<span id="cb93-40"><a href="fig-3.html#cb93-40" aria-hidden="true" tabindex="-1"></a>            <span class="fu">geom_bar</span>( <span class="at">stat =</span> <span class="st">&#39;identity&#39;</span>) <span class="sc">+</span></span>
-<span id="cb93-41"><a href="fig-3.html#cb93-41" aria-hidden="true" tabindex="-1"></a>            <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
-<span id="cb93-42"><a href="fig-3.html#cb93-42" aria-hidden="true" tabindex="-1"></a>            <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&#39;#925E9F&#39;</span>, <span class="st">&#39;#42B540&#39;</span>))  <span class="sc">+</span></span>
-<span id="cb93-43"><a href="fig-3.html#cb93-43" aria-hidden="true" tabindex="-1"></a>            <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&#39;#925E9F&#39;</span>, <span class="st">&#39;#42B540&#39;</span>)) <span class="sc">+</span></span>
-<span id="cb93-44"><a href="fig-3.html#cb93-44" aria-hidden="true" tabindex="-1"></a>            <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
-<span id="cb93-45"><a href="fig-3.html#cb93-45" aria-hidden="true" tabindex="-1"></a>            <span class="fu">theme</span>(<span class="at">axis.title.y  =</span> <span class="fu">element_blank</span>(), </span>
-<span id="cb93-46"><a href="fig-3.html#cb93-46" aria-hidden="true" tabindex="-1"></a>                  <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span>all_title_fs),</span>
-<span id="cb93-47"><a href="fig-3.html#cb93-47" aria-hidden="true" tabindex="-1"></a>                  <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">size=</span>axis_text_fs),</span>
-<span id="cb93-48"><a href="fig-3.html#cb93-48" aria-hidden="true" tabindex="-1"></a>                  <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">size=</span>axis_text_fs),</span>
-<span id="cb93-49"><a href="fig-3.html#cb93-49" aria-hidden="true" tabindex="-1"></a>                  <span class="at">legend.position=</span><span class="st">&#39;bottom&#39;</span>) <span class="sc">+</span></span>
-<span id="cb93-50"><a href="fig-3.html#cb93-50" aria-hidden="true" tabindex="-1"></a>            <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">str_glue</span>(<span class="st">&#39;Response to CR&#39;</span>) ,</span>
-<span id="cb93-51"><a href="fig-3.html#cb93-51" aria-hidden="true" tabindex="-1"></a>                 <span class="at">y =</span> <span class="st">&#39;Score&#39;</span>)</span>
-<span id="cb93-52"><a href="fig-3.html#cb93-52" aria-hidden="true" tabindex="-1"></a>CR</span></code></pre></div>
-<p><img src="analysis_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="fig-3.html#cb94-1" aria-hidden="true" tabindex="-1"></a>tox <span class="ot">&lt;-</span> feature <span class="sc">%&gt;%</span> </span>
-<span id="cb94-2"><a href="fig-3.html#cb94-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">&#39;pull_toxicity&#39;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb94-3"><a href="fig-3.html#cb94-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(pathway, score), <span class="at">y =</span> score, <span class="at">fill =</span> direction)) <span class="sc">+</span></span>
-<span id="cb94-4"><a href="fig-3.html#cb94-4" aria-hidden="true" tabindex="-1"></a>            <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&#39;identity&#39;</span>) <span class="sc">+</span></span>
-<span id="cb94-5"><a href="fig-3.html#cb94-5" aria-hidden="true" tabindex="-1"></a>            <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
-<span id="cb94-6"><a href="fig-3.html#cb94-6" aria-hidden="true" tabindex="-1"></a>            <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&#39;#0099B4&#39;</span>, <span class="st">&#39;#AD002A&#39;</span>))  <span class="sc">+</span></span>
-<span id="cb94-7"><a href="fig-3.html#cb94-7" aria-hidden="true" tabindex="-1"></a>            <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&#39;#0099B4&#39;</span>, <span class="st">&#39;#AD002A&#39;</span>)) <span class="sc">+</span></span>
-<span id="cb94-8"><a href="fig-3.html#cb94-8" aria-hidden="true" tabindex="-1"></a>            <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
-<span id="cb94-9"><a href="fig-3.html#cb94-9" aria-hidden="true" tabindex="-1"></a>            <span class="fu">theme</span>(<span class="at">axis.title.y  =</span> <span class="fu">element_blank</span>(), </span>
-<span id="cb94-10"><a href="fig-3.html#cb94-10" aria-hidden="true" tabindex="-1"></a>                  <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">size=</span>axis_text_fs),</span>
-<span id="cb94-11"><a href="fig-3.html#cb94-11" aria-hidden="true" tabindex="-1"></a>                  <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span>all_title_fs),</span>
-<span id="cb94-12"><a href="fig-3.html#cb94-12" aria-hidden="true" tabindex="-1"></a>                  <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">size=</span>axis_text_fs),</span>
-<span id="cb94-13"><a href="fig-3.html#cb94-13" aria-hidden="true" tabindex="-1"></a>                  <span class="at">legend.position=</span><span class="st">&quot;bottom&quot;</span>) <span class="sc">+</span></span>
-<span id="cb94-14"><a href="fig-3.html#cb94-14" aria-hidden="true" tabindex="-1"></a>            <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">str_glue</span>(<span class="st">&#39;Response to Toxicity&#39;</span>) ,</span>
-<span id="cb94-15"><a href="fig-3.html#cb94-15" aria-hidden="true" tabindex="-1"></a>                 <span class="at">y =</span> <span class="st">&#39;Score&#39;</span>)</span>
-<span id="cb94-16"><a href="fig-3.html#cb94-16" aria-hidden="true" tabindex="-1"></a>tox</span></code></pre></div>
-<p><img src="analysis_files/figure-html/unnamed-chunk-34-2.png" width="672" /></p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="fig-3.html#cb95-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(CR,tox,  </span>
-<span id="cb95-2"><a href="fig-3.html#cb95-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">nrow =</span> <span class="dv">2</span>, </span>
-<span id="cb95-3"><a href="fig-3.html#cb95-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">rel_heights =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>),</span>
-<span id="cb95-4"><a href="fig-3.html#cb95-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">align =</span> <span class="st">&#39;hv&#39;</span>,</span>
-<span id="cb95-5"><a href="fig-3.html#cb95-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis =</span> <span class="st">&#39;b&#39;</span>)</span>
-<span id="cb95-6"><a href="fig-3.html#cb95-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb95-7"><a href="fig-3.html#cb95-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&#39;figs/shotgun_lefse_tox.pdf&#39;</span>, <span class="at">device =</span> <span class="st">&#39;pdf&#39;</span>, <span class="at">height =</span> <span class="dv">10</span>, <span class="at">width =</span> <span class="dv">10</span>, <span class="at">plot =</span> tox)</span>
-<span id="cb95-8"><a href="fig-3.html#cb95-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb95-9"><a href="fig-3.html#cb95-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&#39;figs/shotgun_lefse_CR.pdf&#39;</span>, <span class="at">device =</span> <span class="st">&#39;pdf&#39;</span>, <span class="at">height =</span> <span class="dv">3</span>, <span class="at">width =</span> <span class="dv">10</span>, <span class="at">plot =</span> CR)</span></code></pre></div>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="fig-3.html#cb96-1" aria-hidden="true" tabindex="-1"></a>send <span class="ot">&lt;-</span> asv_annotation_blast_ag <span class="sc">%&gt;%</span> </span>
-<span id="cb96-2"><a href="fig-3.html#cb96-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(asv_key <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&#39;asv_36&#39;</span>,<span class="st">&#39;asv_3&#39;</span>,<span class="st">&#39;asv_27&#39;</span>))</span>
-<span id="cb96-3"><a href="fig-3.html#cb96-3" aria-hidden="true" tabindex="-1"></a>send  <span class="sc">%&gt;%</span> </span>
-<span id="cb96-4"><a href="fig-3.html#cb96-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_csv</span>(<span class="st">&#39;data/three_asv.csv&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="fig-3.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="fig-3.html#cb95-1" aria-hidden="true" tabindex="-1"></a>all_pcts <span class="ot">&lt;-</span> all_sub_pheno <span class="sc">%&gt;%</span> </span>
+<span id="cb95-2"><a href="fig-3.html#cb95-2" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">map</span>(<span class="sc">~</span> <span class="fu">pull</span>(<span class="at">.data =</span> ., fid) ) <span class="sc">%&gt;%</span> </span>
+<span id="cb95-3"><a href="fig-3.html#cb95-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">imap</span>(<span class="sc">~</span> full <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="st">`</span><span class="at"># Pathway</span><span class="st">`</span>, <span class="fu">matches</span>(.x)) <span class="sc">%&gt;%</span> </span>
+<span id="cb95-4"><a href="fig-3.html#cb95-4" aria-hidden="true" tabindex="-1"></a>         <span class="fu">write_tsv</span>(<span class="fu">str_glue</span>(<span class="st">&#39;data/shotgun/pull_{.y}_pcts.tsv&#39;</span>)))</span>
+<span id="cb95-5"><a href="fig-3.html#cb95-5" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb95-6"><a href="fig-3.html#cb95-6" aria-hidden="true" tabindex="-1"></a><span class="co"># then move to Snakemake do the normalization and the split</span></span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="fig-3.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add a filtering step here </span></span>
+<span id="cb96-2"><a href="fig-3.html#cb96-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 50 and 25% </span></span>
+<span id="cb96-3"><a href="fig-3.html#cb96-3" aria-hidden="true" tabindex="-1"></a>pcts <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">&#39;data/shotgun/pull_cr_d100_pcts_cpm_unstratified.tsv&#39;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb96-4"><a href="fig-3.html#cb96-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(<span class="st">&#39;sampleid&#39;</span>, <span class="st">&#39;cpm&#39;</span>, <span class="fu">names</span>(.)[<span class="dv">2</span>]<span class="sc">:</span><span class="fu">names</span>(.)[<span class="fu">ncol</span>(.)]) <span class="sc">%&gt;%</span> </span>
+<span id="cb96-5"><a href="fig-3.html#cb96-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">pw =</span> <span class="st">`</span><span class="at"># Pathway</span><span class="st">`</span>)</span>
+<span id="cb96-6"><a href="fig-3.html#cb96-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-7"><a href="fig-3.html#cb96-7" aria-hidden="true" tabindex="-1"></a>keeppw <span class="ot">&lt;-</span> pcts <span class="sc">%&gt;%</span> </span>
+<span id="cb96-8"><a href="fig-3.html#cb96-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(cpm <span class="sc">&gt;</span> <span class="dv">50</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb96-9"><a href="fig-3.html#cb96-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb96-10"><a href="fig-3.html#cb96-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(pw) <span class="sc">%&gt;%</span> </span>
+<span id="cb96-11"><a href="fig-3.html#cb96-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="fu">floor</span>(<span class="fu">nrow</span>(simple) <span class="sc">*</span> <span class="fl">0.25</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb96-12"><a href="fig-3.html#cb96-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(pw)</span>
+<span id="cb96-13"><a href="fig-3.html#cb96-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-14"><a href="fig-3.html#cb96-14" aria-hidden="true" tabindex="-1"></a>cts_fil <span class="ot">&lt;-</span> pcts <span class="sc">%&gt;%</span> </span>
+<span id="cb96-15"><a href="fig-3.html#cb96-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(pw <span class="sc">%in%</span> keeppw) <span class="sc">%&gt;%</span> </span>
+<span id="cb96-16"><a href="fig-3.html#cb96-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(<span class="st">&#39;sampleid&#39;</span>, <span class="st">&#39;cpm&#39;</span>, <span class="at">fill =</span> <span class="dv">0</span>)</span>
+<span id="cb96-17"><a href="fig-3.html#cb96-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-18"><a href="fig-3.html#cb96-18" aria-hidden="true" tabindex="-1"></a>cts_fil <span class="sc">%&gt;%</span> </span>
+<span id="cb96-19"><a href="fig-3.html#cb96-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_tsv</span>(<span class="st">&#39;data/shotgun/pull_cr_d100_pcts_cpm_unstratified_fil.tsv&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="fig-3.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tox</span></span>
+<span id="cb97-2"><a href="fig-3.html#cb97-2" aria-hidden="true" tabindex="-1"></a>pcts <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">&#39;data/shotgun/pull_toxicity_pcts_cpm_unstratified.tsv&#39;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb97-3"><a href="fig-3.html#cb97-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(<span class="st">&#39;sampleid&#39;</span>, <span class="st">&#39;cpm&#39;</span>, <span class="fu">names</span>(.)[<span class="dv">2</span>]<span class="sc">:</span><span class="fu">names</span>(.)[<span class="fu">ncol</span>(.)]) <span class="sc">%&gt;%</span> </span>
+<span id="cb97-4"><a href="fig-3.html#cb97-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">pw =</span> <span class="st">`</span><span class="at"># Pathway</span><span class="st">`</span>)</span>
+<span id="cb97-5"><a href="fig-3.html#cb97-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-6"><a href="fig-3.html#cb97-6" aria-hidden="true" tabindex="-1"></a>keeppw <span class="ot">&lt;-</span> pcts <span class="sc">%&gt;%</span> </span>
+<span id="cb97-7"><a href="fig-3.html#cb97-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(cpm <span class="sc">&gt;</span> <span class="dv">50</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb97-8"><a href="fig-3.html#cb97-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb97-9"><a href="fig-3.html#cb97-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(pw) <span class="sc">%&gt;%</span> </span>
+<span id="cb97-10"><a href="fig-3.html#cb97-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="fu">floor</span>(<span class="fu">nrow</span>(simple) <span class="sc">*</span> <span class="fl">0.25</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb97-11"><a href="fig-3.html#cb97-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(pw)</span>
+<span id="cb97-12"><a href="fig-3.html#cb97-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-13"><a href="fig-3.html#cb97-13" aria-hidden="true" tabindex="-1"></a>cts_fil <span class="ot">&lt;-</span> pcts <span class="sc">%&gt;%</span> </span>
+<span id="cb97-14"><a href="fig-3.html#cb97-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(pw <span class="sc">%in%</span> keeppw) <span class="sc">%&gt;%</span> </span>
+<span id="cb97-15"><a href="fig-3.html#cb97-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(<span class="st">&#39;sampleid&#39;</span>, <span class="st">&#39;cpm&#39;</span>, <span class="at">fill =</span> <span class="dv">0</span>)</span>
+<span id="cb97-16"><a href="fig-3.html#cb97-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-17"><a href="fig-3.html#cb97-17" aria-hidden="true" tabindex="-1"></a>cts_fil <span class="sc">%&gt;%</span> </span>
+<span id="cb97-18"><a href="fig-3.html#cb97-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_tsv</span>(<span class="st">&#39;data/shotgun/pull_toxicity_pcts_cpm_unstratified_fil.tsv&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="fig-3.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="co"># PATHWAY</span></span>
+<span id="cb98-2"><a href="fig-3.html#cb98-2" aria-hidden="true" tabindex="-1"></a><span class="co"># I already normalized the pcts so don&#39;t need to normalize again here </span></span>
+<span id="cb98-3"><a href="fig-3.html#cb98-3" aria-hidden="true" tabindex="-1"></a>fns <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">&#39;data/shotgun/&#39;</span>, <span class="at">pattern =</span> <span class="st">&#39;lefse_ready_pcts.tsv$&#39;</span>)</span>
+<span id="cb98-4"><a href="fig-3.html#cb98-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb98-5"><a href="fig-3.html#cb98-5" aria-hidden="true" tabindex="-1"></a>cmds <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb98-6"><a href="fig-3.html#cb98-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">fns =</span> fns</span>
+<span id="cb98-7"><a href="fig-3.html#cb98-7" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb98-8"><a href="fig-3.html#cb98-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">format_cmd =</span> <span class="fu">str_glue</span>(<span class="st">&#39;lefse_format_input.py {fns}  {fns}.in -c 1 -u 2&#39;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb98-9"><a href="fig-3.html#cb98-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">run_cmd =</span> <span class="fu">str_glue</span>(<span class="st">&#39;lefse_run.py {fns}.in  {fns}.res&#39;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb98-10"><a href="fig-3.html#cb98-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">plot_cmd =</span> <span class="fu">str_glue</span>(<span class="st">&#39;lefse_plot_res.py {fns}.res {fns}.pdf --format pdf  --feature_font_size 4 --width 10 --dpi 300 --title {fns}&#39;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb98-11"><a href="fig-3.html#cb98-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>fns) <span class="sc">%&gt;%</span> </span>
+<span id="cb98-12"><a href="fig-3.html#cb98-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb98-13"><a href="fig-3.html#cb98-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(value) <span class="sc">%&gt;%</span> </span>
+<span id="cb98-14"><a href="fig-3.html#cb98-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_csv</span>(<span class="st">&#39;data/shotgun/lefse_run_cmd.sh&#39;</span>, <span class="at">col_names =</span> F)</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="fig-3.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the pathway results</span></span>
+<span id="cb99-2"><a href="fig-3.html#cb99-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vdbR)</span>
+<span id="cb99-3"><a href="fig-3.html#cb99-3" aria-hidden="true" tabindex="-1"></a><span class="fu">connect_database</span>(<span class="st">&#39;~/dbConfig.txt&#39;</span>)</span>
+<span id="cb99-4"><a href="fig-3.html#cb99-4" aria-hidden="true" tabindex="-1"></a><span class="fu">get_table_from_database</span>(<span class="st">&#39;metacyc_pathway_name&#39;</span>)</span>
+<span id="cb99-5"><a href="fig-3.html#cb99-5" aria-hidden="true" tabindex="-1"></a><span class="fu">get_table_from_database</span>(<span class="st">&#39;metacyc_pathway_ontology&#39;</span>)</span>
+<span id="cb99-6"><a href="fig-3.html#cb99-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-7"><a href="fig-3.html#cb99-7" aria-hidden="true" tabindex="-1"></a>fns <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">&#39;data/shotgun/&#39;</span>, <span class="at">pattern =</span> <span class="st">&#39;lefse_ready_pcts.tsv.res$&#39;</span>, <span class="at">full.names =</span> T)</span>
+<span id="cb99-8"><a href="fig-3.html#cb99-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-9"><a href="fig-3.html#cb99-9" aria-hidden="true" tabindex="-1"></a>feature <span class="ot">&lt;-</span> fns <span class="sc">%&gt;%</span> </span>
+<span id="cb99-10"><a href="fig-3.html#cb99-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_names</span>(fns) <span class="sc">%&gt;%</span> </span>
+<span id="cb99-11"><a href="fig-3.html#cb99-11" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">map</span>(<span class="sc">~</span> <span class="fu">read_tsv</span>(., <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">&#39;pathway&#39;</span>,<span class="st">&#39;xx&#39;</span>,<span class="st">&#39;direction&#39;</span>,<span class="st">&#39;score&#39;</span>,<span class="st">&#39;pval&#39;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb99-12"><a href="fig-3.html#cb99-12" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(score))) <span class="sc">%&gt;%</span> </span>
+<span id="cb99-13"><a href="fig-3.html#cb99-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(<span class="at">.id =</span> <span class="st">&#39;group&#39;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb99-14"><a href="fig-3.html#cb99-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">str_replace</span>(group, <span class="st">&#39;data/shotgun//&#39;</span>,<span class="st">&#39;&#39;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb99-15"><a href="fig-3.html#cb99-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">str_replace</span>(group, <span class="st">&#39;_lefse_ready_pcts.tsv.res$&#39;</span>,<span class="st">&#39;&#39;</span>)) </span>
+<span id="cb99-16"><a href="fig-3.html#cb99-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-17"><a href="fig-3.html#cb99-17" aria-hidden="true" tabindex="-1"></a><span class="co"># change the &quot;N&quot; direction to be minus score</span></span>
+<span id="cb99-18"><a href="fig-3.html#cb99-18" aria-hidden="true" tabindex="-1"></a>feature <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
+<span id="cb99-19"><a href="fig-3.html#cb99-19" aria-hidden="true" tabindex="-1"></a>  feature <span class="sc">%&gt;%</span> </span>
+<span id="cb99-20"><a href="fig-3.html#cb99-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">split</span>(.<span class="sc">$</span>direction) <span class="sc">%&gt;%</span> </span>
+<span id="cb99-21"><a href="fig-3.html#cb99-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pluck</span>(<span class="st">&#39;no&#39;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb99-22"><a href="fig-3.html#cb99-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">score =</span> <span class="sc">-</span>score),</span>
+<span id="cb99-23"><a href="fig-3.html#cb99-23" aria-hidden="true" tabindex="-1"></a>  feature <span class="sc">%&gt;%</span> </span>
+<span id="cb99-24"><a href="fig-3.html#cb99-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">split</span>(.<span class="sc">$</span>direction) <span class="sc">%&gt;%</span> </span>
+<span id="cb99-25"><a href="fig-3.html#cb99-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pluck</span>(<span class="st">&#39;yes&#39;</span>)  </span>
+<span id="cb99-26"><a href="fig-3.html#cb99-26" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb99-27"><a href="fig-3.html#cb99-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(group, pathway, score) <span class="sc">%&gt;%</span> </span>
+<span id="cb99-28"><a href="fig-3.html#cb99-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pwid =</span> <span class="fu">str_extract</span>(pathway, <span class="st">&#39;^.+_PWY|^PWY.*_</span><span class="sc">\\</span><span class="st">d{3,4}&#39;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb99-29"><a href="fig-3.html#cb99-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pwid =</span> <span class="fu">str_replace_all</span>(pwid, <span class="st">&#39;_&#39;</span>, <span class="st">&#39;-&#39;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb99-30"><a href="fig-3.html#cb99-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pwid =</span> <span class="fu">if_else</span>(<span class="fu">str_detect</span>(pathway, <span class="st">&#39;^TCA&#39;</span>), <span class="st">&#39;TCA&#39;</span>, pwid)) <span class="sc">%&gt;%</span> </span>
+<span id="cb99-31"><a href="fig-3.html#cb99-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pwid =</span> <span class="fu">if_else</span>(<span class="fu">str_detect</span>(pathway, <span class="st">&#39;^NAD&#39;</span>), <span class="st">&#39;NAD-BIOSYNTHESIS-II&#39;</span>, pwid)) <span class="sc">%&gt;%</span> </span>
+<span id="cb99-32"><a href="fig-3.html#cb99-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(metacyc_pathway_name <span class="sc">%&gt;%</span> <span class="fu">select</span>(pwid, pw_name)) <span class="sc">%&gt;%</span> </span>
+<span id="cb99-33"><a href="fig-3.html#cb99-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(metacyc_pathway_ontology <span class="sc">%&gt;%</span> <span class="fu">select</span>(pwid, l4<span class="sc">:</span>l9))</span>
+<span id="cb99-34"><a href="fig-3.html#cb99-34" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb99-35"><a href="fig-3.html#cb99-35" aria-hidden="true" tabindex="-1"></a>all_title_fs <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb99-36"><a href="fig-3.html#cb99-36" aria-hidden="true" tabindex="-1"></a>axis_text_fs <span class="ot">&lt;-</span> <span class="dv">16</span></span>
+<span id="cb99-37"><a href="fig-3.html#cb99-37" aria-hidden="true" tabindex="-1"></a>CR <span class="ot">&lt;-</span> feature <span class="sc">%&gt;%</span> </span>
+<span id="cb99-38"><a href="fig-3.html#cb99-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">&#39;pull_cr_d100&#39;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb99-39"><a href="fig-3.html#cb99-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(pathway, score), <span class="at">y =</span> score, <span class="at">fill =</span> direction)) <span class="sc">+</span></span>
+<span id="cb99-40"><a href="fig-3.html#cb99-40" aria-hidden="true" tabindex="-1"></a>            <span class="fu">geom_bar</span>( <span class="at">stat =</span> <span class="st">&#39;identity&#39;</span>) <span class="sc">+</span></span>
+<span id="cb99-41"><a href="fig-3.html#cb99-41" aria-hidden="true" tabindex="-1"></a>            <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb99-42"><a href="fig-3.html#cb99-42" aria-hidden="true" tabindex="-1"></a>            <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&#39;#925E9F&#39;</span>, <span class="st">&#39;#42B540&#39;</span>))  <span class="sc">+</span></span>
+<span id="cb99-43"><a href="fig-3.html#cb99-43" aria-hidden="true" tabindex="-1"></a>            <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&#39;#925E9F&#39;</span>, <span class="st">&#39;#42B540&#39;</span>)) <span class="sc">+</span></span>
+<span id="cb99-44"><a href="fig-3.html#cb99-44" aria-hidden="true" tabindex="-1"></a>            <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb99-45"><a href="fig-3.html#cb99-45" aria-hidden="true" tabindex="-1"></a>            <span class="fu">theme</span>(<span class="at">axis.title.y  =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb99-46"><a href="fig-3.html#cb99-46" aria-hidden="true" tabindex="-1"></a>                  <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span>all_title_fs),</span>
+<span id="cb99-47"><a href="fig-3.html#cb99-47" aria-hidden="true" tabindex="-1"></a>                  <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">size=</span>axis_text_fs),</span>
+<span id="cb99-48"><a href="fig-3.html#cb99-48" aria-hidden="true" tabindex="-1"></a>                  <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">size=</span>axis_text_fs),</span>
+<span id="cb99-49"><a href="fig-3.html#cb99-49" aria-hidden="true" tabindex="-1"></a>                  <span class="at">legend.position=</span><span class="st">&#39;bottom&#39;</span>) <span class="sc">+</span></span>
+<span id="cb99-50"><a href="fig-3.html#cb99-50" aria-hidden="true" tabindex="-1"></a>            <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">str_glue</span>(<span class="st">&#39;Response to CR&#39;</span>) ,</span>
+<span id="cb99-51"><a href="fig-3.html#cb99-51" aria-hidden="true" tabindex="-1"></a>                 <span class="at">y =</span> <span class="st">&#39;Score&#39;</span>)</span>
+<span id="cb99-52"><a href="fig-3.html#cb99-52" aria-hidden="true" tabindex="-1"></a>CR</span></code></pre></div>
+<p><img src="analysis_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="fig-3.html#cb100-1" aria-hidden="true" tabindex="-1"></a>tox <span class="ot">&lt;-</span> feature <span class="sc">%&gt;%</span> </span>
+<span id="cb100-2"><a href="fig-3.html#cb100-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">&#39;pull_toxicity&#39;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb100-3"><a href="fig-3.html#cb100-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(pathway, score), <span class="at">y =</span> score, <span class="at">fill =</span> direction)) <span class="sc">+</span></span>
+<span id="cb100-4"><a href="fig-3.html#cb100-4" aria-hidden="true" tabindex="-1"></a>            <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&#39;identity&#39;</span>) <span class="sc">+</span></span>
+<span id="cb100-5"><a href="fig-3.html#cb100-5" aria-hidden="true" tabindex="-1"></a>            <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb100-6"><a href="fig-3.html#cb100-6" aria-hidden="true" tabindex="-1"></a>            <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&#39;#0099B4&#39;</span>, <span class="st">&#39;#AD002A&#39;</span>))  <span class="sc">+</span></span>
+<span id="cb100-7"><a href="fig-3.html#cb100-7" aria-hidden="true" tabindex="-1"></a>            <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&#39;#0099B4&#39;</span>, <span class="st">&#39;#AD002A&#39;</span>)) <span class="sc">+</span></span>
+<span id="cb100-8"><a href="fig-3.html#cb100-8" aria-hidden="true" tabindex="-1"></a>            <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb100-9"><a href="fig-3.html#cb100-9" aria-hidden="true" tabindex="-1"></a>            <span class="fu">theme</span>(<span class="at">axis.title.y  =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb100-10"><a href="fig-3.html#cb100-10" aria-hidden="true" tabindex="-1"></a>                  <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">size=</span>axis_text_fs),</span>
+<span id="cb100-11"><a href="fig-3.html#cb100-11" aria-hidden="true" tabindex="-1"></a>                  <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span>all_title_fs),</span>
+<span id="cb100-12"><a href="fig-3.html#cb100-12" aria-hidden="true" tabindex="-1"></a>                  <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">size=</span>axis_text_fs),</span>
+<span id="cb100-13"><a href="fig-3.html#cb100-13" aria-hidden="true" tabindex="-1"></a>                  <span class="at">legend.position=</span><span class="st">&quot;bottom&quot;</span>) <span class="sc">+</span></span>
+<span id="cb100-14"><a href="fig-3.html#cb100-14" aria-hidden="true" tabindex="-1"></a>            <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">str_glue</span>(<span class="st">&#39;Response to Toxicity&#39;</span>) ,</span>
+<span id="cb100-15"><a href="fig-3.html#cb100-15" aria-hidden="true" tabindex="-1"></a>                 <span class="at">y =</span> <span class="st">&#39;Score&#39;</span>)</span>
+<span id="cb100-16"><a href="fig-3.html#cb100-16" aria-hidden="true" tabindex="-1"></a>tox</span></code></pre></div>
+<p><img src="analysis_files/figure-html/unnamed-chunk-36-2.png" width="672" /></p>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="fig-3.html#cb101-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(CR,tox,  </span>
+<span id="cb101-2"><a href="fig-3.html#cb101-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">nrow =</span> <span class="dv">2</span>, </span>
+<span id="cb101-3"><a href="fig-3.html#cb101-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">rel_heights =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>),</span>
+<span id="cb101-4"><a href="fig-3.html#cb101-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">align =</span> <span class="st">&#39;hv&#39;</span>,</span>
+<span id="cb101-5"><a href="fig-3.html#cb101-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis =</span> <span class="st">&#39;b&#39;</span>)</span>
+<span id="cb101-6"><a href="fig-3.html#cb101-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-7"><a href="fig-3.html#cb101-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&#39;figs/shotgun_lefse_tox.pdf&#39;</span>, <span class="at">device =</span> <span class="st">&#39;pdf&#39;</span>, <span class="at">height =</span> <span class="dv">10</span>, <span class="at">width =</span> <span class="dv">10</span>, <span class="at">plot =</span> tox)</span>
+<span id="cb101-8"><a href="fig-3.html#cb101-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-9"><a href="fig-3.html#cb101-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&#39;figs/shotgun_lefse_CR.pdf&#39;</span>, <span class="at">device =</span> <span class="st">&#39;pdf&#39;</span>, <span class="at">height =</span> <span class="dv">3</span>, <span class="at">width =</span> <span class="dv">10</span>, <span class="at">plot =</span> CR)</span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="fig-3.html#cb102-1" aria-hidden="true" tabindex="-1"></a>send <span class="ot">&lt;-</span> asv_annotation_blast_ag <span class="sc">%&gt;%</span> </span>
+<span id="cb102-2"><a href="fig-3.html#cb102-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(asv_key <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&#39;asv_36&#39;</span>,<span class="st">&#39;asv_3&#39;</span>,<span class="st">&#39;asv_27&#39;</span>))</span>
+<span id="cb102-3"><a href="fig-3.html#cb102-3" aria-hidden="true" tabindex="-1"></a>send  <span class="sc">%&gt;%</span> </span>
+<span id="cb102-4"><a href="fig-3.html#cb102-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_csv</span>(<span class="st">&#39;data/three_asv.csv&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="fig-3.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
 <pre><code>## R version 4.1.1 (2021-08-10)
 ## Platform: x86_64-apple-darwin17.0 (64-bit)
 ## Running under: macOS Catalina 10.15.7
