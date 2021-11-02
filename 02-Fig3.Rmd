@@ -519,6 +519,14 @@ pull_cr_d100 <- joined  %>%
   facet_wrap(direction ~ genus, scales="free_y") 
 pull_cr_d100 
 ggsave('figs/amplicon/lefse_taxa_crd100.pdf', width = 15, height = 13, plot = pull_cr_d100)
+
+
+# check the box plot in detail again
+joined %>% 
+  filter(genus == 'Ruminococcus') %>% 
+  filter(grp == 'pull_cr_d100') %>% 
+  split(.$cr_d100) %>% 
+  map(~ median(.$Relab)*100)
  
 ```
   
